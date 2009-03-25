@@ -1,3 +1,4 @@
 #summary Compiling and installing
+#labels setup
 
 todo
