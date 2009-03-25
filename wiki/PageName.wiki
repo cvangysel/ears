@@ -1,0 +1,10 @@
+#summary EARS documentation
+
+= Overview =
+
+Add your content here.
+
+
+= Details =
+
+  * Logging and debugging
