@@ -1,4 +1,4 @@
 #summary Compiling and installing
-#labels setup
+#labels setup,howTo
 
 todo
