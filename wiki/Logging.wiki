@@ -1,0 +1,17 @@
+#summary Logging and debugging
+#labels design
+
+The Logger object is used as follows:
+
+Logger::log(3) << "Log message at debuglevel 3\n";
+
+Any time the Logger object is told to log something at a debug level that is above the global debug level, it ignores it. 
+
+The debug levels are defined as follows:
+  # error 
+  # warning
+  # general log (default level)
+  # detailed log 
+  # debug 
+
+The global debug level can be specified as a command line parameter.
