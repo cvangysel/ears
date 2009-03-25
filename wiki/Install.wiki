@@ -1,4 +1,7 @@
-#summary Compiling and installing
+#summary Installing and compiling
 #labels setup,HowTo
 
-todo
+=Requirements=
+  * Lemur toolkit http://sourceforge.net/projects/lemur/
+
+=Installing EARS=
