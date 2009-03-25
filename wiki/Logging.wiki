@@ -3,7 +3,9 @@
 
 The Logger object is used as follows:
 
+{{{
 Logger::log(3) << "Log message at debuglevel 3\n";
+}}}
 
 Any time the Logger object is told to log something at a debug level that is above the global debug level, it ignores it. 
 
