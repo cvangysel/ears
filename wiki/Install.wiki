@@ -2,7 +2,7 @@
 #labels setup,HowTo
 
 =Requirements=
-  * Lemur toolkit (http://sourceforge.net/projects/lemur/)
+  * Lemur toolkit [http://sourceforge.net/projects/lemur/]
 
 =Installing=
   # download and extract EARS
