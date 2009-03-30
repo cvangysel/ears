@@ -4,4 +4,11 @@
 =Requirements=
   * Lemur toolkit (http://sourceforge.net/projects/lemur/)
 
-=Installing EARS=
+=Installing=
+  # download and extract EARS
+  # open `Makefile` and set the value of the `Lemur_dir` variable according to your local settings
+  # under linux: type `make` in the EARS directory
+
+=(Re)compiling=
+  # type `make clean`
+  # type `make`
