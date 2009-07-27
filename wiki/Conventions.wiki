@@ -4,7 +4,7 @@
 =Directory structure=
 
 {{{
-doc/         Documentation
+doc/         Doxygen-generated docs
 examples/    Examples
 include/     Header files
 src/         Source files
