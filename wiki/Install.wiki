@@ -1,14 +1,17 @@
 #summary Installing and compiling
 #labels setup,HowTo
 
-=Requirements=
-  * Lemur toolkit [http://sourceforge.net/projects/lemur/]
+=Requirements and prerequisites=
 
-=Installing=
+The sources have only two hard dependencies: the [[http://sourceforge.net/projects/lemur/ Lemur toolkit] and the STL (which comes with all sane C++ compilers).
+
+EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9
+
+=Installing and compiling=
   # download and extract EARS
   # open `Makefile` and set the value of the `Lemur_dir` variable according to your local settings
-  # under linux: type `make` in the EARS directory
-
-=(Re)compiling=
-  # type `make clean`
-  # type `make`
+  # The build is fairly conventional: 
+{{{
+make clean
+make
+}}}
