@@ -10,7 +10,7 @@ EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4,
 =Installing and compiling=
   # download and extract EARS
   # open `Makefile` and set the value of the `Lemur_dir` variable according to your local settings
-  # The build is fairly conventional: 
+  # The build is fairly conventional. Go to the EARS directory, and: 
 {{{
 make clean
 make
