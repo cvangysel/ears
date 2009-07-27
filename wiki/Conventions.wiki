@@ -1,8 +1,12 @@
 #labels design,implementation
-
 =Directory structure=
 
-...
+{{{
+doc/         Documentation
+examples/    Examples
+include/     Header files
+src/         Source files
+}}}
 
 =Namespace=
 
