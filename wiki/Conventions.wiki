@@ -1,4 +1,6 @@
+#summary Overview of the source tree structure and conventions
 #labels design,implementation
+
 =Directory structure=
 
 {{{
