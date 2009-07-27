@@ -3,7 +3,7 @@
 
 =Requirements and prerequisites=
 
-The sources have only two hard dependencies: the [[http://sourceforge.net/projects/lemur/][Lemur toolkit]] and the STL (which comes with all sane C++ compilers).
+The sources have only two hard dependencies: the [http://sourceforge.net/projects/lemur/ Lemur toolkit] and the STL (which comes with all sane C++ compilers).
 
 EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9
 
