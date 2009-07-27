@@ -8,22 +8,22 @@ The tasks of finding and profiling entities are performed by completing the foll
   # Generating output
 
 
-This pipeline is implemented in the 'AssociationFramework' class and is executed in its 'run' method.
+This pipeline is implemented in the `AssociationFramework` class and is executed in its `run` method.
 
 Below, we discuss each of these steps in detail.
 
-=Loading parameters and data=
+==Loading parameters and data==
 
 ...
 
-=Initializing=
+==Initializing==
 
 ...
 
-=Generating associations=
+==Generating associations==
 
 ...
 
-=Generating output=
+==Generating output==
 
 ...
