@@ -19,4 +19,4 @@ All code is in the `ears` namespace.
 
 File names: .hpp for header files, .cpp for source files.
 
-Coding style follows the guidelines recommended in http://geosoft.no/development/cppstyle.html
+Coding style follows the guidelines put forward in http://geosoft.no/development/cppstyle.html
