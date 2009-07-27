@@ -1,0 +1,16 @@
+#labels design,implementation
+
+=Directory structure=
+
+...
+
+=Namespace=
+
+All code is in the `ears` namespace.
+
+
+=Conventions=
+
+File names: .hpp for header files, .cpp for source files.
+
+Coding style follows the guidelines recommended in http://geosoft.no/development/cppstyle.html
