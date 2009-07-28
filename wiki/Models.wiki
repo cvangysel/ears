@@ -4,12 +4,16 @@ EARS implements a generative probabilistic modeling framework for capturing asso
 
 =Model 1=
 
-==Baseline (M1)==
+..
 
-==Proximity-based variation (M1B)==
+==Proximity-based variation (Model 1B)==
+
+..
 
 =Model 2=
 
-==Baseline (M2)==
+..
 
-==Proximity-based variation (M2B)==
+==Proximity-based variation (Model 2B)==
+
+..
