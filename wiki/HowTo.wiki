@@ -1,0 +1,23 @@
+#summary Crash course on installing and using EARS
+#labels howTo,project
+
+=Installing EARS=
+
+==Requirements and prerequisites==
+
+The sources have only two hard dependencies: the [http://sourceforge.net/projects/lemur/ Lemur toolkit] and the STL (which comes with all sane C++ compilers).
+
+EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9
+
+==Installing and compiling==
+  # download and extract EARS
+  # open `Makefile` and set the value of the `Lemur_dir` variable according to your local settings
+  # The build is fairly conventional. Go to the EARS directory, and: 
+{{{
+make clean
+make
+}}}
+
+=Using EARS=
+
+==Running EARS on the example data provided==
