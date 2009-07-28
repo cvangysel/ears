@@ -1,4 +1,32 @@
-#summary Papers related to the EARS project
+#summary Academic work related to EARS
 #labels research
 
-Here is a list of papers that are related to the EARS project.
+The most comprehensive work on the subject is:
+
+  * *People Search in the Enterprise*, K. Balog. PhD thesis, University of Amsterdam, June 2008. [http://staff.science.uva.nl/~kbalog/phd-thesis/ more]
+
+Research papers by subject areas:
+
+==Enterprise domain (expertise retrieval)==
+  * *Combining Candidate and Document Models for Expert Search*, K. Balog and M. de Rijke. In: The Seventeenth Text REtrieval Conference (TREC 2008) Proceedings, NIST, February 2009.
+  * *A Language Modeling Framework for Expert Finding*, K. Balog, L. Azzopardi, and M. de Rijke. Information Processing and Management, 45(1):1-19, January 2009.
+  * *Non-Local Evidence for Expert Finding*, K. Balog and M. de Rijke. In: ACM 17th Conference on Information and Knowledge Managment (CIKM 2008), pages 489-498, October 2008.
+  * *Integrating Contextual Factors into Topic-Centric Retrieval Models for Finding Similar Experts*, K. Hofmann, K. Balog, T. Bogers, and M. de Rijke. In: SIGIR 2008 Workshop on Future Challenges in Expertise Retrieval (fCHER), July 2008.
+  * *Associating People and Documents*, K. Balog and M. de Rijke. In: 30th European Conference on Information Retrieval (ECIR 2008), LNCS 4956, pages 296-308, April 2008.
+[PDF|BIB|Slides]
+  * *Query and Document Models for Enterprise Search*, K. Balog, K. Hofmann, W. Weerkamp and M. de Rijke. In: The Sixteenth Text REtrieval Conference (TREC 2007) Proceedings, NIST, February 2008.
+  * *Finding Similar Experts*, K. Balog and M. de Rijke. In: 30th Annual International ACM SIGIR Conference on Research & Development on Information Retrieval (SIGIR 2007), pages 821-822, July 2007.
+[PDF|BIB|Poster]
+  * *Broad Expertise Retrieval in Sparse Data Environments*, K. Balog, T. Bogers, L. Azzopardi, M. de Rijke, and A. van den Bosch. In: 30th Annual International ACM SIGIR Conference on Research & Development on Information Retrieval (SIGIR 2007), pages 551-558, July 2007.
+  * *Language Models for Enterprise Search: Query Expansion and Combination of Evidence*, K. Balog, E. Meij, and M. de Rijke. In: The Fifteenth Text REtrieval Conference (TREC 2006) Proceedings, NIST, February 2007.
+[PDF|BIB]
+  * *Determining Expert Profiles (With an Application to Expert Finding)*, K. Balog and M. de Rijke. In: 20th International Joint Conference on Artificial Intelligence (IJCAI 2007), pages 2657-2662, January 2007.
+  * Formal Models for Expert Finding in Enterprise Corpora, K. Balog, L. Azzopardi, and M. de Rijke. In: 29th Annual International ACM SIGIR Conference on Research & Development on Information Retrieval (SIGIR 2006), pages 43-50, August 2006.
+  * *Finding Experts and their Details in E-mail Corpora*, K. Balog and M. de Rijke. In: 15th International World Wide Web Conference (WWW 2006), May 2006.
+[PDF|BIB|Poster]
+  * *Language Modeling Approaches for Enterprise Tasks*, L. Azzopardi, K. Balog, and M. de Rijke. In: The Fourteenth Text Retrieval Conference (TREC 2005), 2006.
+
+==Blog domain (blogger/mood retrieval)==
+  * *Finding Key Bloggers*, One Post At A Time, W. Weerkamp, K. Balog, and M. de Rijke. In: 18th European Conference on Articificial Intelligence (ECAI 2008), pages 318-322, July 2008.
+  * *Bloggers as Experts*, K. Balog, M. de Rijke, and W. Weerkamp. In: 31th Annual International ACM SIGIR Conference on Research & Development on Information Retrieval (SIGIR 2008), pages 753-754, July 2008.
+  * *How to Overcome Tiredness: Estimating Topic-Mood Associations*, K. Balog and M. de Rijke. In: International Conference on Weblogs and Social Media (ICWSM 2007), pages 199-202, March 2007.
