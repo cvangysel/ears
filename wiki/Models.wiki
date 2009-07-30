@@ -12,6 +12,9 @@ EARS implements a generative probabilistic modeling framework for capturing asso
 
 =Model 2=
 
+Parameter
+  * topDocNum
+
 ..
 
 ==Proximity-based variation (Model 2B)==
