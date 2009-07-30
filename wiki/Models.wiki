@@ -12,8 +12,11 @@ EARS implements a generative probabilistic modeling framework for capturing asso
 
 =Model 2=
 
-Parameter
-  * topDocNum
+==Parameters==
+  * *topDocNum* is an optional parameter that could be used to set an upper limit on the number of relevant documents to be taken into account.
+{{{
+<topDocNum>100</topDocNum>
+}}}
 
 ..
 
