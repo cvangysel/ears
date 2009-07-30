@@ -22,8 +22,21 @@ Below, we discuss each of these steps in detail.
 
 ==Generating associations==
 
+Parameters:
+  * model
+  * index
+  * smoothingMethod
+  * smoothingParam
+  * assocFile
+  * queryFile
+
 ...
 
 ==Generating output==
+
+Parameters:
+  * runID
+  * outputFile
+  * resultNum
 
 ...
