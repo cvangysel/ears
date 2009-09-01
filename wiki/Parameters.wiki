@@ -2,19 +2,19 @@
 
 ==General parameters==
 
-*Obligatory parameters are typeset in boldface*
+*Obligatory parameters are denoted with (!)*
 
-  * *index*: location of Lemur/Indri index
-  * *model*: association finding model. Possible values:
+  * *index* (!): location of Lemur/Indri index
+  * *model* (!): association finding model. Possible values:
     * 1: Model 1
     * 2: Model 2
   * *associationFile*: file with document-entity associations. This can be generated from the collection, see XXX
-  * associationFileFormat: format of the association file. Possible values
+  * *associationFileFormat*: format of the association file. Possible values
     * 0 (default): `DOCNO EntityID`
     * 1: `DOCNO EntityID weight`
     * 2: `DOCNO EntityAlias`
     * 3: `DOCNO EntityAlias weight`
-  * entityAliasMapping: obligatory, when associationFileFormat is set to 2 or 3. This file defines a mapping of `EntityAlias` values to `EntityID`-s. See EntityRepresentation for details.
+  * *entityAliasMapping*: obligatory, when associationFileFormat is set to 2 or 3. This file defines a mapping of `EntityAlias` values to `EntityID`-s. See EntityRepresentation for details.
 
 
   * smoothingMethod
