@@ -1,0 +1,32 @@
+#summary Description of parameters
+
+==General parameters==
+
+====Obligatory parameters====
+  * *index*: location of Lemur/Indri index
+  * *model*: association finding model. Possible values:
+    * 1: Model 1
+    * 2: Model 2
+  * *associationFile*: file with document-entity associations. This can be generated from the collection, see XXX
+
+====Optional parameters====
+  * *associationFileFormat*: format of the association file. Possible values
+    * 0 (default): 'DOCNO EntityID'
+    * 1: 'DOCNO EntityID weight'
+    * 2: 'DOCNO EntityAlias'
+    * 3: 'DOCNO EntityAlias weight'
+
+
+  * smoothingMethod
+  * smoothingParam
+  * assocFile
+  * queryFile
+  * runID
+  * outputFile
+  * resultNum
+
+Notes
+  * 'DOCNO' denotes 
+  * '" "' (space) denotes whitespace
+  * 'weight is a non-negative numeric value (integer or real)
+...
