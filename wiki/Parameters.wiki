@@ -8,7 +8,7 @@
   * *model* (!): association finding model. Possible values:
     * 1: Model 1
     * 2: Model 2
-  * *associationFile*: file with document-entity associations. This can be generated from the collection, see XXX
+  * *associationFile*: file with document-entity associations. This can be generated from the collection, see GeneratingAssociations for details.
   * *associationFileFormat*: format of the association file. Possible values
     * 0 (default): `DOCNO EntityID`
     * 1: `DOCNO EntityID weight`
@@ -25,8 +25,8 @@
   * outputFile
   * resultNum
 
-Notes
-  * 'DOCNO' denotes 
-  * '" "' (space) denotes whitespace
-  * 'weight is a non-negative numeric value (integer or real)
+Notes:
+  * `DOCNO` denotes the external document ID 
+  * `" "` (space) denotes whitespace
+  * `weight` is a non-negative numeric value (integer or real)
 ...
