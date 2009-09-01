@@ -19,24 +19,3 @@ Below, we discuss each of these steps in detail.
 ==Initializing==
 
 ...
-
-==Generating associations==
-
-Parameters:
-  * model
-  * index
-  * smoothingMethod
-  * smoothingParam
-  * assocFile
-  * queryFile
-
-...
-
-==Generating output==
-
-Parameters:
-  * runID
-  * outputFile
-  * resultNum
-
-...
