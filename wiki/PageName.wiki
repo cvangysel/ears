@@ -1,7 +1,7 @@
 #summary Various file formats handled by EARS
 #labels manual
 
-== EntityAlias-EntityID mapping file ==
+== !EntityAlias-EntityID mapping file ==
 Defined in parameter `entityAliasMapping`
 
 Format: `EntityAlias EntityID`
