@@ -2,9 +2,9 @@
 #labels manual
 
 == !EntityAlias-EntityID mapping file ==
-Defined in parameter `entityAliasMapping`
+Location defined in parameter `entityAliasMapping`
 
-Format: `EntityAlias EntityID`
+Format: `EntityAlias EntityID` pairs per line, where `EntityAlias` and `EntityID` are strings that contain only non-whitespace characters.
 
 Example:
 {{{
