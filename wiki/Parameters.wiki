@@ -12,9 +12,7 @@
 ===Optional parameters===
 || *Parameter* || *Description* || *Possible values* || *See also* || 
 || `associationFileFormat` || Format of the association file || `0` (default), `1`, `2`, or `3` || FileFormats ||  
-
-
-  * *entityAliasMapping*: obligatory, when associationFileFormat is set to 2 or 3. This file defines a mapping of `EntityAlias` values to `EntityID`-s. See EntityRepresentation for details.
+|| `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || || EntityRepresentation || 
 
 
   * smoothingMethod
