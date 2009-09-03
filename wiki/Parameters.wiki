@@ -4,19 +4,18 @@
 
 ===Obligatory parameters=== 
 
-|| *Parameter* || *Description* || *See also* || 
-|| index || Location of the Lemur/Indri index || ||
-|| model || association finding model. Possible values: <br> `1` (Model 1), `2` (Model 2) || ||
-
-  * *associationFile*: file with document-entity associations. This can be generated from the collection, see GeneratingAssociations for details.
-  * *associationFileFormat*: format of the association file. Possible values
-    * 0 (default): `DOCNO EntityID`
-    * 1: `DOCNO EntityID weight`
-    * 2: `DOCNO EntityAlias`
-    * 3: `DOCNO EntityAlias weight`
-  * *entityAliasMapping*: obligatory, when associationFileFormat is set to 2 or 3. This file defines a mapping of `EntityAlias` values to `EntityID`-s. See EntityRepresentation for details.
+|| *Parameter* || *Description* || *Possible values* || *See also* || 
+|| `index` || Location of the Lemur/Indri index || || || 
+|| `model` || Association finding model. || `1` = Model 1 <br> `2` = Model 2 || Models ||
+|| `associationFile` || File with document-entity associations || || GeneratingAssociations, Parameter `associationFileFormat` || 
 
 ===Optional parameters===
+|| *Parameter* || *Description* || *Possible values* || *See also* || 
+|| `associationFileFormat` || Format of the association file || `0` (default), `1`, `2`, or `3` || FileFormats ||  
+
+
+  * *entityAliasMapping*: obligatory, when associationFileFormat is set to 2 or 3. This file defines a mapping of `EntityAlias` values to `EntityID`-s. See EntityRepresentation for details.
+
 
   * smoothingMethod
   * smoothingParam
