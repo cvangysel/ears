@@ -2,6 +2,7 @@
 
 ==General parameters==
 
+
 ===Obligatory parameters=== 
 
 || *Parameter* || *Description* || *Possible values* || *Related parameter(s)* || *See also* || 
@@ -11,8 +12,9 @@
 
 ===Optional parameters===
 || *Parameter* || *Description* || *Possible values* || *See also* || 
-|| `associationFileFormat` || Format of the association file || `0` (default), `1`, `2`, or `3` || FileFormats ||  
+|| `associationFileFormat` || Association file format || `0` (default), `1`, `2`, or `3` || FileFormats ||  
 || `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || || EntityRepresentation || 
+|| `queryFileFormat` || Query file format || `0` (default), `1`, `2`, or `3` || FileFormats ||  
 
 
   * smoothingMethod
@@ -22,9 +24,3 @@
   * runID
   * outputFile
   * resultNum
-
-Notes:
-  * `DOCNO` denotes the external document ID 
-  * `" "` (space) denotes whitespace
-  * `weight` is a non-negative numeric value (integer or real)
-...
