@@ -8,6 +8,11 @@
   * 2: `DOCNO EntityAlias`
   * 3: `DOCNO EntityAlias weight`
 
+Where:
+  * `DOCNO` denotes the external document ID 
+  * `" "` (space) denotes whitespace
+  * `weight` is a non-negative numeric value (integer or real)
+
 == Query file ==
 
 == !EntityAlias-EntityID mapping file ==
