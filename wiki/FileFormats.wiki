@@ -1,6 +1,15 @@
 #summary Various file formats handled by EARS
 #labels manual
 
+== Document-entity association file ==
+
+  * 0: `DOCNO EntityID` (default)
+  * 1: `DOCNO EntityID weight`
+  * 2: `DOCNO EntityAlias`
+  * 3: `DOCNO EntityAlias weight`
+
+== Query file ==
+
 == !EntityAlias-EntityID mapping file ==
 Location defined in parameter `entityAliasMapping`
 
