@@ -1,0 +1,4 @@
+#summary Entity representation
+#labels design
+
+Each entity is recognized by a unique identifier, the `entityID`.
