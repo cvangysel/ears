@@ -5,7 +5,7 @@
 Controlled by parameter `QueryFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
-|| `0` (default) || {{{<DOC qID>`<br>`term_1`<br>`...`<br>`}}} || ||
+|| `0` (default) || `<DOC qID>`<br>`term_1`<br>`...`<br>`term_n`<br>`</DOC>` || ||
 
 == Document-entity association file ==
 Controlled by parameter `AssociationFileFormat`. 
