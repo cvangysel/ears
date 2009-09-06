@@ -34,3 +34,8 @@ johnsmith John_Smith
 john.smith@email.com John_Smith
 anotheralias John_Smith
 }}}
+
+== Output file ==
+
+|| *Format* || *Task* || *Syntax* || *Example* || 
+|| `0` (default) || `ef` || `qID Q0 entityID rank score runID` || `q-01 Q0 Entity-03 1 0.891 Model1`<br>`q-01 Q0 Entity-19 2 0.750 Model1`<br>`q-01 Q0 Entity-01 1 0.749 Model1` ||
