@@ -19,7 +19,7 @@
 || `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || || EntityRepresentation || 
 || `queryFileFormat` || Query file format || `0` (default), `1`, `2`, or `3` || FileFormats ||  
 || `outputFileFormat` || Output file format || `0` (default), `1` || FileFormats ||  
-|| `outputNum` || Number of results to output<br>(entities for entity finding, topics for entity profiling) || default: all results || ||
+|| `outputNum` || Number of results to output<br>(entities for entity finding, topics for entity profiling) || default: `0` = all results || ||
 
 
   * smoothingMethod
