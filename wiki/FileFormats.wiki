@@ -8,7 +8,7 @@
 Controlled by parameter `AssociationFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
-|| `0` (default) || `EntityID DOCNO` || ||
+|| `0` (default) || `EntityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
 || `1` || `EntityID DOCNO weight` || ||
 || `2` || `EntityAlias DOCNO` || ||
 || `3` || `EntityAlias DOCNO weight` || ||
