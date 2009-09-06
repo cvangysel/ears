@@ -1,4 +1,8 @@
 #summary Entity representation
 #labels design
 
-Each entity is recognized by a unique identifier, the `entityID`.
+  * Each entity is recognized by a unique identifier, the `entityID`.
+    * `entityID` is a string that contains only non-whitespace characters
+  * Since there might exist more than one representations of the same entity (e.g., a person recognized by name, email address, or social security number) an entity may have multiple aliases. 
+    * `entityAlias` is a string that contains only non-whitespace characters
+    * each `entityAlias` is assigned to an `entityID`, therefore, it identifies the entity unambiguously
