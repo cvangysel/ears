@@ -1,19 +1,23 @@
 #summary Various file formats handled by EARS
 #labels manual
 
+== Query file ==
+
 == Document-entity association file ==
 
-  * 0: `DOCNO EntityID` (default)
-  * 1: `DOCNO EntityID weight`
-  * 2: `DOCNO EntityAlias`
-  * 3: `DOCNO EntityAlias weight`
+Controlled by parameter `AssociationFileFormat`. 
 
-Where:
+|| *Format* || *Syntax* || *Example* || 
+|| `0` (default) || `EntityID DOCNO` || ||
+|| `1` || `EntityID DOCNO weight` || ||
+|| `2` || `EntityAlias DOCNO` || ||
+|| `3` || `EntityAlias DOCNO weight` || ||
+
+Notes:
+  * columns are separated by whitespace
   * `DOCNO` denotes the external document ID 
-  * `" "` (space) denotes whitespace
   * `weight` is a non-negative numeric value (integer or real)
-
-== Query file ==
+  * when `EntityAlias` is used, an !EntityAlias-EntityID mapping needs to be provided; see [EntityRepresentation] and below
 
 == !EntityAlias-EntityID mapping file ==
 Location defined in parameter `entityAliasMapping`
