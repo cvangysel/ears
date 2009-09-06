@@ -2,9 +2,12 @@
 #labels manual
 
 == Query file ==
+Controlled by parameter `QueryFileFormat`. 
+
+|| *Format* || *Syntax* || *Example* || 
+|| `0` (default) || {{{<DOC qID>`<br>`term_1`<br>`...`<br>`}}} || ||
 
 == Document-entity association file ==
-
 Controlled by parameter `AssociationFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
