@@ -9,7 +9,7 @@ A query file may contain any number of queries. Query terms (optionally along wi
 || `1` || `<DOC qID>`<br>`term_1;weight_1`<br>`...`<br>`term_n;weight_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar;0.55`<br>`energy;0.45`<br>`</DOC>` ||
 
 == Document-entity association file ==
-Controlled by parameter `AssociationFileFormat`. 
+The syntax of the document-entity association file is controlled by the parameter `AssociationFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
 || `0` (default) || `EntityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
@@ -24,13 +24,14 @@ Notes:
   * when `EntityAlias` is used, an !EntityAlias-EntityID mapping needs to be provided; see [EntityRepresentation] and below
 
 == !EntityAlias-EntityID mapping file ==
-Location defined in parameter `entityAliasMapping`. See [EntityRepresentation] for explanation of entity aliases.
+Location defined in parameter `entityAliasMapping`. See [EntityRepresentation] for the explanation of entity aliases.
 
 || *Syntax* || *Example* || 
 || `EntityAlias EntityID` || `johnsmith John_Smith`<br>`john.smith@email.com John_Smith`<br>`anotheralias John_Smith` ||
 
 
 == Output file ==
+The syntax of the output file is controlled by the parameter `OutputFileFormat`. 
 
 || *Format* || *Task* || *Syntax* || *Example* || 
 || `0` (default) || `ef` || `qID Q0 entityID rank score runID` || `q-01 Q0 Entity-03 1 0.891 Model1`<br>`q-01 Q0 Entity-19 2 0.750 Model1`<br>`q-01 Q0 Entity-01 3 0.749 Model1` ||
