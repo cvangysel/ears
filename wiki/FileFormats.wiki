@@ -12,10 +12,10 @@ A query file may contain any number of queries. Query terms (optionally along wi
 The syntax of the document-entity association file is controlled by the parameter `AssociationFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
-|| `0` (default) || `EntityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
-|| `1` || `EntityID DOCNO weight` || `Entity-01 Doc-01 0.5`<br>`Entity-02 Doc-01 0.5`<br>`Entity-01 Doc-02 0.2` ||
-|| `2` || `EntityAlias DOCNO` || `Person-01-name Doc-01`<br>`Person-01-email Doc-01`<br>`Person-02-name Doc-01` ||
-|| `3` || `EntityAlias DOCNO weight` || `Person-01-name Doc-01 0.1`<br>`Person-01-email Doc-01 0.3`<br>`Person-02-name Doc-01 0.2` ||
+|| `0` (default) || `entityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
+|| `1` || `entityID DOCNO weight` || `Entity-01 Doc-01 0.5`<br>`Entity-02 Doc-01 0.5`<br>`Entity-01 Doc-02 0.2` ||
+|| `2` || `entityAlias DOCNO` || `Person-01-name Doc-01`<br>`Person-01-email Doc-01`<br>`Person-02-name Doc-01` ||
+|| `3` || `entityAlias DOCNO weight` || `Person-01-name Doc-01 0.1`<br>`Person-01-email Doc-01 0.3`<br>`Person-02-name Doc-01 0.2` ||
 
 Notes:
   * columns are separated by whitespace
@@ -23,11 +23,11 @@ Notes:
   * `weight` is a non-negative numeric value (integer or real)
   * when `EntityAlias` is used, an !EntityAlias-EntityID mapping needs to be provided; see [EntityRepresentation] and below
 
-== !EntityAlias-EntityID mapping file ==
+== Entity alias mapping file ==
 Location defined in parameter `entityAliasMapping`. See [EntityRepresentation] for the explanation of entity aliases.
 
 || *Syntax* || *Example* || 
-|| `EntityAlias EntityID` || `johnsmith John_Smith`<br>`john.smith@email.com John_Smith`<br>`anotheralias John_Smith` ||
+|| `entityAlias entityID` || `johnsmith John_Smith`<br>`john.smith@email.com John_Smith`<br>`anotheralias John_Smith` ||
 
 
 == Output file ==
