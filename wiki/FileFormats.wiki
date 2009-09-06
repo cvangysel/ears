@@ -3,10 +3,11 @@
 
 == Query file ==
 Controlled by parameter `QueryFileFormat`. 
+A query file may contain any number of queries, each between `<DOC qID>`, `</DOC>` tags, where `qID` is a unique query identifier.
 
 || *Format* || *Syntax* || *Example* || 
-|| `0` (default) || `<DOC qID_1>`<br>`term_1`<br>`...`<br>`term_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar`<br>`energy`<br>`</DOC>`<br>`<DOC q-02>`<br>`...`<br>`</DOC>` ||
-|| `1` || `<DOC qID>`<br>`term_1;weight_1`<br>`...`<br>`term_n;weight_n`<br>`</DOC>` || ||
+|| `0` (default) || `<DOC qID>`<br>`term_1`<br>`...`<br>`term_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar`<br>`energy`<br>`</DOC>` ||
+|| `1` || `<DOC qID>`<br>`term_1;weight_1`<br>`...`<br>`term_n;weight_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar;0.55`<br>`energy;0.45`<br>`</DOC>` ||
 
 == Document-entity association file ==
 Controlled by parameter `AssociationFileFormat`. 
