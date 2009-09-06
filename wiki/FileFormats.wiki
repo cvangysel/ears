@@ -9,9 +9,9 @@ Controlled by parameter `AssociationFileFormat`.
 
 || *Format* || *Syntax* || *Example* || 
 || `0` (default) || `EntityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
-|| `1` || `EntityID DOCNO weight` || ||
-|| `2` || `EntityAlias DOCNO` || ||
-|| `3` || `EntityAlias DOCNO weight` || ||
+|| `1` || `EntityID DOCNO weight` || `Entity-01 Doc-01 0.5`<br>`Entity-02 Doc-01 0.5`<br>`Entity-01 Doc-02 0.2` ||
+|| `2` || `EntityAlias DOCNO` || `Person-01-name Doc-01`<br>`Person-01-email Doc-01`<br>`Person-02-name Doc-01` ||
+|| `3` || `EntityAlias DOCNO weight` || `Person-01-name Doc-01 0.1`<br>`Person-01-email Doc-01 0.3`<br>`Person-02-name Doc-01 0.2` ||
 
 Notes:
   * columns are separated by whitespace
