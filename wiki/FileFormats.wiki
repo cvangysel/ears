@@ -5,7 +5,7 @@
 Controlled by parameter `QueryFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
-|| `0` (default) || `<DOC qID_1>`<br>`term_1`<br>`...`<br>`term_n`<br>`</DOC>`<br>`...`<br>`<DOC qID_1>`<br>`...`<br>`</DOC>` ||  ||
+|| `0` (default) || `<DOC qID_1>`<br>`term_1`<br>`...`<br>`term_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar`<br>`energy`<br>`</DOC>`<br>`<DOC q-02>`<br>`...`<br>`</DOC>` ||
 || `1` || `<DOC qID>`<br>`term_1;weight_1`<br>`...`<br>`term_n;weight_n`<br>`</DOC>` || ||
 
 == Document-entity association file ==
