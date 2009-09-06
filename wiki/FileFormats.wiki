@@ -21,7 +21,7 @@ Notes:
   * columns are separated by whitespace
   * `DOCNO` denotes the external document ID 
   * `weight` is a non-negative numeric value (integer or real)
-  * when `EntityAlias` is used, an !EntityAlias-EntityID mapping needs to be provided; see [EntityRepresentation] and below
+  * when `EntityAlias` is used, an !entityAlias-entityID mapping needs to be provided; see [EntityRepresentation] and below
 
 == Entity alias mapping file ==
 Location defined in parameter `entityAliasMapping`. See [EntityRepresentation] for the explanation of entity aliases.
