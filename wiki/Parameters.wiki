@@ -9,12 +9,16 @@
 || `index` || Location of the Lemur/Indri index || || || || 
 || `model` || Association finding model. || `1` = Model 1 <br> `2` = Model 2 || || [Models] ||
 || `associationFile` || File with document-entity associations || || `associationFileFormat` || GeneratingAssociations || 
+|| `queryFile` || File with queries (topics) || || `queryFileFormat` || ||
+|| `smoothingMethod` || Smoothing method || `jm` = Jelinek-Mercer<br> `dirichlet` = Dirichlet || `smoothingParam` || || 
+|| `outputFile` || Output file || || `outputFileFormat` || ||
 
 ===Optional parameters===
 || *Parameter* || *Description* || *Possible values* || *See also* || 
 || `associationFileFormat` || Association file format || `0` (default), `1`, `2`, or `3` || FileFormats ||  
 || `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || || EntityRepresentation || 
 || `queryFileFormat` || Query file format || `0` (default), `1`, `2`, or `3` || FileFormats ||  
+|| `outputFileFormat` || Output file format || `0` (default), `1` || FileFormats ||  
 
 
   * smoothingMethod
