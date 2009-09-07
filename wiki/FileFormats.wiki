@@ -12,10 +12,15 @@ A query file may contain any number of queries. Query terms (optionally along wi
 The syntax of the document-entity association file is controlled by the parameter `AssociationFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
-|| `0` (default) || `entityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
-|| `1` || `entityID DOCNO weight` || `Entity-01 Doc-01 0.5`<br>`Entity-02 Doc-01 0.5`<br>`Entity-01 Doc-02 0.2` ||
-|| `2` || `entityAlias DOCNO` || `Person-01-name Doc-01`<br>`Person-01-email Doc-01`<br>`Person-02-name Doc-01` ||
-|| `3` || `entityAlias DOCNO weight` || `Person-01-name Doc-01 0.1`<br>`Person-01-email Doc-01 0.3`<br>`Person-02-name Doc-01 0.2` ||
+|| `0` (default) || `DOCNO entityID` || `Doc-01 Entity-01`<br>`Doc-01 Entity-02`<br>`Doc-02 Entity-01` ||
+|| `1` || `entityID DOCNO` || `Entity-01 Doc-01`<br>`Entity-02 Doc-01`<br>`Entity-01 Doc-02` ||
+|| `2` || `DOCNO entityAlias` || `Doc-01 Person-01-name`<br>`Doc-01 Person-01-email`<br>`Doc-01 Person-02-name` ||
+|| `3` || `entityAlias DOCNO` || `Person-01-name Doc-01`<br>`Person-01-email Doc-01`<br>`Person-02-name Doc-01` ||
+|| `4` || `DOCNO entityID weight` || `Doc-01 Entity-01 0.5`<br>`Doc-01 Entity-02 0.5`<br>`Doc-02 Entity-01 0.2` ||
+|| `5` || `entityID DOCNO weight` || `Entity-01 Doc-01 0.5`<br>`Entity-02 Doc-01 0.5`<br>`Entity-01 Doc-02 0.2` ||
+|| `6` || `DOCNO entityAlias weight` || `Doc-01 Person-01-name 0.1`<br>`Doc-01 Person-01-email 0.3`<br>`Doc-01 Person-02-name 0.2` ||
+|| `7` || `entityAlias DOCNO weight` || `Person-01-name Doc-01 0.1`<br>`Person-01-email Doc-01 0.3`<br>`Person-02-name Doc-01 0.2` ||
+
 
 Notes:
   * columns are separated by whitespace
@@ -27,7 +32,7 @@ Notes:
 Location defined in parameter `entityAliasMapping`. See [EntityRepresentation] for the explanation of entity aliases.
 
 || *Syntax* || *Example* || 
-|| `entityAlias entityID` || `johnsmith John_Smith`<br>`john.smith@email.com John_Smith`<br>`anotheralias John_Smith` ||
+|| `entityAlias entityID` || `johnsmith John_Smith`<br>`john.smith@email.com John_Smith`<br>`Person-02-name Person_02` ||
 
 
 == Output file ==
