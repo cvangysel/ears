@@ -40,10 +40,7 @@ EARS can help you in two entity related tasks:
 
 Learn more about the tasks and the association finding models [Models here].
 
-
-There are sample config files for the two baseline models in the `examples/ilps_abstracts/conf` directory: `ears_model1.conf` and `ears_model2.conf` for Models 1 and 2, respectively. 
-  * If you indexed the collection using a !KeyFile index, you need to edit these files, and<br>replace the line `<index>examples/ilps_abstracts/index</index>` <br>with `<index>examples/ilps_abstracts/index/index.key</index>`
-
+===Syntax===
 The syntax of the `ears` program is the following:
 `ears <command> <paramfile> [debug_level]`
 
@@ -52,7 +49,11 @@ Where
   * `<paramfile>` is a parameter file (see [Parameters this page] for the description of possible parameters)
   * `debug_level` (optionally) is the reporting level (see below and [Logging this page])
 
-For example:
+===Parameter files===
+There are sample parameter files for the two baseline models in the `examples/ilps_abstracts/conf` directory: `ears_model1.conf` and `ears_model2.conf` for Models 1 and 2, respectively. 
+  * If you indexed the collection using a !KeyFile index, you need to edit these files, and<br>replace the line `<index>examples/ilps_abstracts/index</index>` <br>with `<index>examples/ilps_abstracts/index/index.key</index>`
+
+===Example usage===
 _All examples are executed from the EARS directory_
 
 Finding experts using Model 1:
