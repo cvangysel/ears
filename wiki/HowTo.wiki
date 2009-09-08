@@ -28,10 +28,10 @@ The document collection needs to be indexed using the Lemur toolkit.
   # Change to the `EARS` directory<br>_This step is crucial as paths are set relative to this directory. Alternatively, you may edit the config files and change the paths to absolute ones._
   # Execute either of the two:
     * `{Lemur_dir}/bin/IndriBuildIndex examples/ilps_abstracts/conf/IndriBuildIndex.conf examples/ilps_abstracts/stopwords/stopwords.indri` for building an Indri index (preferred)
-    * `{Lemur_dir}/bin/BuildIndex examples/ilps_abstracts/conf/BuildIndex.conf` for building a !KeyFile index
+    * `{Lemur_dir}/bin/BuildIndex examples/ilps_abstracts/conf/BuildIndex.conf` for building a !KeyFile index,
 where `{Lemur_dir}` is the location of your Lemur installation.
 
-More details on about the indexing process and the differences between index types are given on [http://sourceforge.net/apps/trac/lemur/wiki/Building%20Indexes this page].
+More details about the indexing process and the differences between index types are given on [http://sourceforge.net/apps/trac/lemur/wiki/Building%20Indexes this page].
 
 ==Finding and profiling entities==
 EARS can help you in two entity related tasks:
