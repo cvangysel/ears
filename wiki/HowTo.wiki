@@ -23,9 +23,11 @@ Note: EARS has been tested with the following versions of the Lemur toolkit: 4.3
 Usage will be demonstrated on the [ExampleDataSet "ILPS Abstracts" data set], shipped with the EARS distribution. 
 
 ==Indexing the collection==
+The document collection needs to be indexed using the Lemur toolkit.
+
 From the `EARS/examples/` directory, execute
-  * `{Lemur_dir}/bin/BuildIndex BuildIndex.conf` for indexing with Lemur
-  * `{Lemur_dir}/bin/IndriBuildIndex IndriBuildIndex.conf` for indexing with Indri
+  * `{Lemur_dir}/bin/BuildIndex BuildIndex.conf` for building a KeyFile index
+  *  `{Lemur_dir}/bin/IndriBuildIndex IndriBuildIndex.conf stopwords.indri` for building an Indri index
 where `{Lemur_dir}` is the location of your Lemur installation.
 
 More details on about the indexing process and the differences between index types are given on [http://sourceforge.net/apps/trac/lemur/wiki/Building%20Indexes this page].
