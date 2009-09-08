@@ -26,7 +26,7 @@ Usage will be demonstrated on the [ExampleDataSet "ILPS Abstracts" data set], sh
 The document collection needs to be indexed using the Lemur toolkit.
 
 From the `EARS/examples/` directory, execute
-  * `{Lemur_dir}/bin/BuildIndex BuildIndex.conf` for building a KeyFile index
+  * `{Lemur_dir}/bin/BuildIndex BuildIndex.conf` for building a !KeyFile index
   *  `{Lemur_dir}/bin/IndriBuildIndex IndriBuildIndex.conf stopwords.indri` for building an Indri index
 where `{Lemur_dir}` is the location of your Lemur installation.
 
