@@ -8,18 +8,15 @@
 The sources have only two hard dependencies: the [http://sourceforge.net/projects/lemur/ Lemur toolkit] and the STL (which comes with all sane C++ compilers).
 
 ===Installing the Lemur toolkit===
-See the [http://www.lemurproject.org/tutorials/begin_installing-1.php Lemur tutorial].
+See the [http://sourceforge.net/apps/trac/lemur/wiki/Compiling%20and%20Installing Compiling and Installing] section on the [http://sourceforge.net/apps/trac/lemur/wiki Lemur Toolkit and Indri Search Engine Wiki].
 
 Note: EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9, 4.10
 
 ==Installing and compiling==
   # download and extract EARS
   # open `Makefile` and set the value of the `Lemur_dir` variable according to your local settings
-  # The build is fairly conventional. Go to the EARS directory, and: 
-{{{
-make clean
-make
-}}}
+  # The build is fairly conventional. Go to the EARS directory, and type `make`
+    * If you need to re-compile it for any reason, you may want to issue `make clean` and then `make` 
 
 =Using EARS=
 
@@ -31,4 +28,4 @@ From the `EARS/examples/` directory, execute
   * `LEMURPATH/bin/IndriBuildIndex IndriBuildIndex.conf` for indexing with Indri
 where `LEMURPATH` is the location of the Lemur installation.
 
-[http://www.lemurproject.org/tutorials/begin_indexing-1.php More about indexing with the Lemur toolkit.]
+More details on about the indexing process and the differences between index types are given on [http://sourceforge.net/apps/trac/lemur/wiki/Building%20Indexes this page].
