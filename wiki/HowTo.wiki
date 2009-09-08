@@ -42,10 +42,75 @@ Learn more about the tasks and the association finding models [Models here].
 
 
 There are sample config files for the two baseline models in the `examples/ilps_abstracts/conf` directory: `ears_model1.conf` and `ears_model2.conf` for Models 1 and 2, respectively. 
-  * If you indexed the collection using a !KeyFile index, you need to edit these files and replace the line `<index>examples/ilps_abstracts/index</index>` <br>with `<index>examples/ilps_abstracts/index/index.key</index>`
+  * If you indexed the collection using a !KeyFile index, you need to edit these files, and<br>replace the line `<index>examples/ilps_abstracts/index</index>` <br>with `<index>examples/ilps_abstracts/index/index.key</index>`
 
+The syntax of the `ears` program is the following:
+`ears <command> <paramfile> [debug_level]`
 
-  # Change to the `EARS` directory
-  # 
-  # If you indexed the collection using a 
-  # Execute `ears ef examples/ilps_abstracts/conf/ears_model1.conf`
+Where
+  * `<command>` is either `ef` (for entity finding) or `ep` (for entity profiling)
+  * `<paramfile>` is a parameter file (see [Parameters this page] for the description of possible parameters)
+  * `debug_level` (optionally) is the reporting level (see below and [Logging this page])
+
+For example:
+_All examples are executed from the EARS directory_
+
+Finding experts using Model 1:
+{{{
+ears ef examples/ilps_abstracts/conf/ears_model1.conf`
+}}}
+
+The output will look like:
+{{{
+Entity and Association Retrieval System (EARS) v0.8 (2009-03-30)
+Copyright (c) 2005-2009, Krisztian Balog
+
+Loading index 'examples/ilps_abstracts/index'
+Loading Entity-Document associations 'examples/ilps_abstracts/data/associations.list'
+Loading queries 'examples/ilps_abstracts/data/queries.ldf'
+Initializing Model 1
+Estimating smoothing parameter
+Calculating topic-entity associations
+Model 1 completed
+Writing output to 'examples/ilps_abstracts/output/model1.out'
+Over and out
+}}}
+
+The debug levels can be used to see what is actually happening.
+E.g., using `DEBUG`
+{{{
+ears ef examples/ilps_abstracts/conf/ears_model1.conf DEBUG`
+}}}
+will help you to follow the process of the computation:
+{{{
+Estimating smoothing parameter
+  Parameter beta is set to 426.557
+Calculating topic-entity associations
+  Constructing collection Language Model
+  Caching collection probabilities
+  Entity #1/61 (K_Balog)
+  Entity #2/61 (M_Rijke)
+  Entity #3/61 (W_Weerkamp)
+}}}
+
+Using `DEBUG2` will include even more details, e.g., how the scores are computed:
+{{{
+  Entity #1/61 (K_Balog)
+    Creating model based on 9 associated documents
+    Scoring queries
+      Query #1/10 ('q-01')
+        log p(q|e) = 
+          + p('information'|q) [0.333333] * log( p(t|e) [0.00336702] )
+          + p('model'|q) [0.333333] * log( p(t|e) [0.00554641] )
+          + p('retrieval'|q) [0.333333] * log( p(t|e) [0.0102995] )
+          = -5.15466
+        p(q|e) = 0.00577242
+      Query #2/10 ('q-02')
+        log p(q|e) = 
+          + p('enterprise'|q) [0.333333] * log( p(t|e) [0.00507137] )
+          + p('expert'|q) [0.333333] * log( p(t|e) [0.00764664] )
+          + p('finding'|q) [0.333333] * log( p(t|e) [0.00974633] )
+          = -4.9295
+}}}
+
+On the other end of the spectrum, you may use `WARNING` or `ERROR` as the `debug_level` to report only warnings and errors, respectively.
