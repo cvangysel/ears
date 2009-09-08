@@ -7,7 +7,12 @@
 
 The sources have only two hard dependencies: the [http://sourceforge.net/projects/lemur/ Lemur toolkit] and the STL (which comes with all sane C++ compilers).
 
-EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9
+===Installing the Lemur toolkit===
+See the [http://www.lemurproject.org/tutorials/begin_installing-1.php Lemur tutorial].
+
+TODO
+
+Note: EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9, 4.10
 
 ==Installing and compiling==
   # download and extract EARS
@@ -20,4 +25,12 @@ make
 
 =Using EARS=
 
-==Running EARS on the example data provided==
+Usage will be demonstrated on the [ExampleDataSet "ILPS Abstracts" data set], shipped with the EARS distribution. 
+
+==Indexing the collection==
+From the `EARS/examples/` directory, execute
+  * `LEMURPATH/bin/BuildIndex BuildIndex.conf` for indexing with Lemur
+  * `LEMURPATH/bin/IndriBuildIndex IndriBuildIndex.conf` for indexing with Indri
+where `LEMURPATH` is the location of the Lemur installation.
+
+[http://www.lemurproject.org/tutorials/begin_indexing-1.php More about indexing with the Lemur toolkit.]
