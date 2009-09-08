@@ -1,0 +1,5 @@
+#summary Description of the example data shipped with EARS
+
+= ILPS Abstracts =
+
+The data set contains abstracts of 43 papers, published by XX researchers from the [http://ilps.science.uva.nl/ ILPS group at the University of Amsterdam]. 
