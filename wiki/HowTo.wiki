@@ -57,7 +57,7 @@ _All examples are executed from the EARS directory_
 
 Finding experts using Model 1:
 {{{
-ears ef examples/ilps_abstracts/conf/ears_model1.conf`
+ears ef examples/ilps_abstracts/conf/ears_model1.conf
 }}}
 
 The output will look like:
@@ -79,7 +79,7 @@ Over and out
 The debug levels can be used to see what is actually happening.
 E.g., using `DEBUG`
 {{{
-ears ef examples/ilps_abstracts/conf/ears_model1.conf DEBUG`
+ears ef examples/ilps_abstracts/conf/ears_model1.conf DEBUG
 }}}
 will help you to follow the process of the computation:
 {{{
