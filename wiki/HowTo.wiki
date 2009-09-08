@@ -10,8 +10,6 @@ The sources have only two hard dependencies: the [http://sourceforge.net/project
 ===Installing the Lemur toolkit===
 See the [http://www.lemurproject.org/tutorials/begin_installing-1.php Lemur tutorial].
 
-TODO
-
 Note: EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9, 4.10
 
 ==Installing and compiling==
