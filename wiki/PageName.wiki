@@ -12,4 +12,4 @@
   * More examples, including enterprise expert search, entity search in news, and related entity finding
   * ...
 
-Use this comment field at the bottom of this page to request new features or suggest modifications to existing features.
+Use the comment field at the bottom of this page to request new features or suggest modifications to existing features.
