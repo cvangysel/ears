@@ -16,7 +16,7 @@ Commands `ef` and `ep`.
 ==Optional parameters==
 ===All models===
 || *Parameter* || *Description* || *Possible values* || *See also* || 
-|| `associationFileFormat` || Association file format || value between `0` and `7`, where `0` is the default || FileFormats ||  
+|| `associationFileFormat` || Association file format || `0` (default), `1` .. `7` || FileFormats ||  
 || `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || (location) || EntityRepresentation || 
 || `outputFileFormat` || Output file format || `0` (default), `1` || FileFormats ||  
 || `outputNum` || Number of results to output<br>(entities for entity finding, topics for entity profiling) || default: all results || ||
