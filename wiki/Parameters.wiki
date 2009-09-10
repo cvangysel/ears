@@ -10,12 +10,13 @@ Commands `ef` and `ep`.
 || `model` || Association finding model. || `1` = Model 1 <br> `2` = Model 2 || || [Models] ||
 || `associationFile` || File with document-entity associations || (location) || `associationFileFormat` ||  || 
 || `queryFile` || File with queries (topics) || (location) || || FileFormats ||
-|| `smoothingMethod` || Smoothing method || `jm` = Jelinek-Mercer<br> `dirichlet` = Dirichlet || `smoothingParam` || || 
 || `outputFile` || Output file || (location) || `outputFileFormat` || ||
 
 ==Optional parameters==
 ===All models===
 || *Parameter* || *Description* || *Possible values* || *See also* || 
+|| `smoothingMethod` || Smoothing method || `dirichlet` = Dirichlet (default)<br>`jm` = Jelinek-Mercer || `smoothingParam` || || 
+|| `smoothingParam` || Smoothing parameter<br>(\beta for Dirichlet, \lambda for Jelinek-Mercer smoothing) || (real) || ||
 || `associationFileFormat` || Association file format || `0` (default), `1` .. `7` || FileFormats ||  
 || `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || (location) || EntityRepresentation || 
 || `outputFileFormat` || Output file format || `0` (default), `1` || FileFormats ||  
