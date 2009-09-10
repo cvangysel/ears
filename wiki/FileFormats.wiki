@@ -2,7 +2,7 @@
 #labels manual
 
 == Query file ==
-A query file may contain any number of queries. Query terms (optionally along with the corresponding weights) are enumerated between `<DOC qID>` and `</DOC>` tags, where `qID` is a unique query identifier. Weight of the term can be defined after the character `;`. If not provided, the value `1.0` is used. Term weights are normalized automatically, so that they sum up to 1.
+A query file may contain any number of queries. Query terms (optionally along with the corresponding weights) are enumerated between `<DOC qID>` and `</DOC>` tags, where `qID` is a unique query identifier. The weight of each term can be defined after the character `;` -- if not provided explicitly, the value `1.0` is used. Term weights are normalized automatically, so that they sum up to 1.
 
 || *Syntax* || *Example* || 
 || `<DOC qID>`<br>`term_1`<br>`...`<br>`term_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar`<br>`energy`<br>`</DOC>` ||
