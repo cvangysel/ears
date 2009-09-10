@@ -15,7 +15,7 @@ Commands `ef` and `ep`.
 ==Optional parameters==
 ===All models===
 || *Parameter* || *Description* || *Possible values* || *See also* || 
-|| `smoothingMethod` || Smoothing method || `dirichlet` = Dirichlet (default)<br>`jm` = Jelinek-Mercer || `smoothingParam` || || 
+|| `smoothingMethod` || Smoothing method || `dirichlet` = Dirichlet (default)<br>`jm` = Jelinek-Mercer || `smoothingParam` ||
 || `smoothingParam` || Smoothing parameter<br>(\beta for Dirichlet, \lambda for Jelinek-Mercer smoothing) || (real) || ||
 || `associationFileFormat` || Association file format || `0` (default), `1` .. `7` || FileFormats ||  
 || `entityAliasMapping` || File defining a mapping of `EntityAlias` values to `EntityID`-s.<br>Obligatory, when associationFileFormat is set to 2 or 3. || (location) || EntityRepresentation || 
