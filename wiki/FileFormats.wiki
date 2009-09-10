@@ -40,6 +40,6 @@ The syntax of the output file is controlled by the parameter `OutputFileFormat`.
 
 || *Format* || *Task* || *Syntax* || *Example* || 
 || `0` (default) || `ef` || `qID Q0 entityID rank score runID` || `q-01 Q0 Entity-03 1 0.891 Model1`<br>`q-01 Q0 Entity-19 2 0.750 Model1`<br>`q-01 Q0 Entity-01 3 0.749 Model1` ||
-|| `1` || `ef` || `qID entityID score` || `q-01 Entity-03 0.891 Model1`<br>`q-01 Entity-19 0.750`<br>`q-01 Entity-01 0.749` ||
+|| `1` || `ef` || `qID entityID score` || `q-01 Entity-03 0.891`<br>`q-01 Entity-19 0.750`<br>`q-01 Entity-01 0.749` ||
 || `0` (default) || `ep` || `entityID Q0 qID rank score runID` || `Entity-01 Q0 q-13 1 0.179 Model1`<br>`Entity-01 Q0 q-27 2 0.153 Model1`<br>`Entity-01 Q0 q-09 3 0.091 Model1`<br> ||
 || `1` || `ep` || `entityID qID score` || `Entity-01 q-13 0.179`<br>`Entity-01 q-27 0.153`<br>`Entity-01 q-09 0.091`<br> ||
