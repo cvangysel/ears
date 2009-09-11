@@ -10,7 +10,7 @@ The debug level may be specified from the command prompt. It defines the minimum
 || `debug` || 2 || `logDEBUG` ||  The DEBUG level designates fine-grained informational events that are most useful to debug the application. || 
 || `info` || 3 || `logINFO` || The INFO level designates informational messages that highlight the progress of the application at coarse-grained level. (Default) || 
 || `warning` || 4 || `logWARNING` || If the debug state is WARNING, only errors and warnings will be filed.  ||
-|| `error` || 5 || `logERROR` || || The ERROR level has the highest possible rank and is intended to turn off logging. ||
+|| `error` || 5 || `logERROR` || The ERROR level has the highest possible rank and is intended to turn off logging. ||
 
 
 =Implementation=
