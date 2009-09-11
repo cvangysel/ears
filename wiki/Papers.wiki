@@ -26,3 +26,6 @@ Research papers by subject areas:
   * *Finding Key Bloggers*, One Post At A Time, W. Weerkamp, K. Balog, and M. de Rijke. In: _18th European Conference on Articificial Intelligence (ECAI 2008)_, pages 318-322, July 2008.
   * *Bloggers as Experts*, K. Balog, M. de Rijke, and W. Weerkamp. In: _31th Annual International ACM SIGIR Conference on Research & Development on Information Retrieval (SIGIR 2008)_, pages 753-754, July 2008.
   * *How to Overcome Tiredness: Estimating Topic-Mood Associations*, K. Balog and M. de Rijke. In: _International Conference on Weblogs and Social Media (ICWSM 2007)_, pages 199-202, March 2007.
+
+==News domain (named entity retrieval)==
+  * *SaHaRa: Discovering Entity-Topic Associations in Online News*, K. Balog, M. de Rijke, R. Franz, H. Peetz, B. Brinkman, I. Johgi, and M. Hirschel. 8th International Semantic Web Conference (ISWC 2009), October 2009.
