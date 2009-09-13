@@ -7,7 +7,7 @@ Commands `ef` and `ep`.
 
 || *Parameter* || *Description* || *Possible values* || *Related parameter(s)* || *See also* || 
 || `index` || Location of the Lemur/Indri index || (location) || || || 
-|| `model` || Association finding model. || `1` = Model 1 <br> `2` = Model 2 || || [Models] ||
+|| `model` || Association finding model || `1` = Model 1 <br> `2` = Model 2 || || [Models] ||
 || `associationFile` || File with document-entity associations || (location) || `associationFileFormat` ||  || 
 || `queryFile` || File with queries (topics) || (location) || || FileFormats ||
 || `outputFile` || Output file || (location) || `outputFileFormat` || ||
