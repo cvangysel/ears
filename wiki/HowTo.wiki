@@ -38,7 +38,7 @@ EARS can help you in two entity related tasks:
   * *finding entities* is about retrieving entities for a query topic (_"Which entities are associated with the topic?"_). In our example, we rank people with respect to their expertise given a particular topical area. Therefore, for each query, a ranked list of entities (names) is returned. 
   * *entity profiling* is the other way around: for each entity we return topics (_"Which topics are associated with the entity?"_) In our example, topics are ranked according to the person's proficiency in each. 
 
-Learn more about the tasks and the association finding models [Models here].
+Learn more about the tasks and the association finding models [AssociationFinding here].
 
 ===Syntax===
 The syntax of the `ears` program is the following:
