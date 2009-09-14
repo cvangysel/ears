@@ -63,7 +63,7 @@ ears ef examples/ilps_abstracts/conf/ears_model1.conf
 
 The output will look like:
 {{{
-Entity and Association Retrieval System (EARS) v0.8 (2009-03-30)
+Entity and Association Retrieval System (EARS) v0.9 (2009-09-09)
 Copyright (c) 2005-2009, Krisztian Balog
 
 Loading index 'examples/ilps_abstracts/index'
