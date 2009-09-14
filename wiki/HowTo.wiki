@@ -78,9 +78,9 @@ Over and out
 }}}
 
 The debug levels can be used to see what is actually happening.
-E.g., using `DEBUG`
+E.g., using `debug`
 {{{
-ears ef examples/ilps_abstracts/conf/ears_model1.conf DEBUG
+ears ef examples/ilps_abstracts/conf/ears_model1.conf debug
 }}}
 will help you to follow the process of the computation:
 {{{
@@ -94,7 +94,7 @@ Calculating topic-entity associations
   Entity #3/61 (W_Weerkamp)
 }}}
 
-Using `DEBUG2` will include even more details, e.g., how the scores are computed:
+Using `debugall` will include even more details, e.g., how the scores are computed:
 {{{
   Entity #1/61 (K_Balog)
     Creating model based on 9 associated documents
@@ -114,4 +114,4 @@ Using `DEBUG2` will include even more details, e.g., how the scores are computed
           = -4.9295
 }}}
 
-On the other end of the spectrum, you may use `WARNING` or `ERROR` as the `debug_level` to report only warnings and errors, respectively.
+On the other end of the spectrum, you may use `warning` or `error` as the `debug_level` to report only warnings and errors, respectively.
