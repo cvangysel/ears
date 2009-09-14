@@ -1,5 +1,5 @@
 #summary Entity representation
-#labels design
+#labels design,manual
 
   * Each entity is recognized by a unique identifier, the `entityID`.
     * `entityID` is a string that contains only non-whitespace characters
