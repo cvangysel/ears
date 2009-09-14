@@ -1,4 +1,5 @@
 #summary Description of parameters
+#labels manual
 
 =Parameters for entity finding and profiling=
 Commands `ef` and `ep`.
