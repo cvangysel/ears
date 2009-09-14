@@ -1,5 +1,5 @@
 #summary Crash course on installing and using EARS
-#labels howTo,project
+#labels manual
 
 =Installing EARS=
 
