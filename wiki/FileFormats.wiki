@@ -26,6 +26,7 @@ Notes:
   * columns are separated by whitespace
   * `DOCNO` denotes the external document ID 
   * `weight` is a non-negative numeric value (integer or real)
+  * association weights are NOT re-normalized 
   * when `EntityAlias` is used, an !entityAlias-entityID mapping needs to be provided; see [EntityRepresentation] and below
 
 == Entity alias mapping file ==
