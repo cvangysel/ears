@@ -12,6 +12,9 @@ See the [http://sourceforge.net/apps/trac/lemur/wiki/Compiling%20and%20Installin
 
 Note: EARS has been tested with the following versions of the Lemur toolkit: 4.3, 4.4, 4.7, 4.8, 4.9, 4.10
 
+You might want to check the [KnownIssues known issues] page, even if using the most recent version of the Lemur toolkit.
+
+
 ==Installing and compiling EARS==
   # download and extract EARS
   # open `Makefile` and set the value of the `Lemur_dir` variable according to your local settings
