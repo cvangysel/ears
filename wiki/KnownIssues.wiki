@@ -3,4 +3,4 @@
 
 = Known issues =
 
-  * Model 1 using Indri indexes might leak memory; this is a [http://sourceforge.net/tracker/?func=detail&aid=2879981&group_id=161383&atid=819615 bug in the Lemur toolkit] that has been fixed after Lemur 4.10/Indri 2.10; [http://lemur.cvs.sourceforge.net/viewvc/lemur/lemur/index/src/LemurIndriIndex.cpp download LemurIndriIndex.cpp version 1.19 or above]
+  * Model 1 using Indri indexes might leak memory; this is a [http://sourceforge.net/tracker/?func=detail&aid=2879981&group_id=161383&atid=819615 bug in the Lemur toolkit] that has been fixed after Lemur 4.10/Indri 2.10; [http://lemur.cvs.sourceforge.net/viewvc/lemur/lemur/index/src/LemurIndriIndex.cpp download LemurIndriIndex.cpp reversion 1.19 or above]
