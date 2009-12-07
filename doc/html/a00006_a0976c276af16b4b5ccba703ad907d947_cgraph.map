@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" href="$a00003.html#abc194e21db0a234b003ae23d756f2441" title="Entities associated with the document." alt="" coords="197,5,373,29"/>
+<area shape="rect" href="$a00003.html#a92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID." alt="" coords="204,53,367,77"/>
+<area shape="rect" href="$a00003.html#a7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="196,101,375,125"/>
+<area shape="rect" href="$a00008.html#a6339a4e8170482354c3fd3b00c9af5e4" title="External query ID." alt="" coords="207,149,364,173"/>
+<area shape="rect" href="$a00008.html#a32feb77641bd68049743ed8d5e391aa3" title="Number of queries." alt="" coords="199,197,372,221"/>
+<area shape="rect" href="$a00006.html#a5021ae090e1520dfe53ef55860cafdd8" title="Scoring all documents in the collection for a given query." alt="" coords="196,245,375,269"/>
+<area shape="rect" href="$a00008.html#a4d5937f41e4b5114e0ff309f3de77fd7" title="Query as a term distribution (EARS representation)." alt="" coords="425,245,569,269"/>
+</map>

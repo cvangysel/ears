@@ -1,0 +1,17 @@
+This is the Entity and Association Retrieval System (EARS).
+For more information, including full documentation for the
+toolkit, please visit the web site [http://code.google.com/p/ears/].
+
+See the file INSTALL in this same directory for instructions on how to
+configure, build, and install the toolkit library. 
+
+See the HOWTO file for a crash course on using the toolkit.
+
+See the file LICENSE in this same directory for the terms of
+redistribution and use. If you have any questions, please send email
+to krisztian.balog@gmail.com.
+
+
+--
+EARS -- Entity and Association Retrieval System
+Copyright (c) 2009, Krisztian Balog. All rights reserved.

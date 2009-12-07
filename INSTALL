@@ -1,0 +1,34 @@
+Installing EARS
+
+
+==Requirements and prerequisites==
+
+The sources have only two hard dependencies: the Lemur toolkit and the
+STL (which comes with all sane C++ compilers).
+
+
+==Installing the Lemur toolkit==
+
+1. Download the Lemur toolkit from [http://sourceforge.net/projects/lemur/]
+
+2. See the Compiling and Installing section on the Lemur Toolkit and Indri
+Search Engine Wiki.
+[http://sourceforge.net/apps/trac/lemur/wiki/Compiling%20and%20Installing]
+
+
+==Installing and compiling EARS==
+
+1. open Makefile and set the value of the Lemur_dir variable
+according to your local settings
+
+2. type 'make'
+(If you need to re-compile it for any reason, you may want to
+issue 'make clean' first and then 'make')
+
+
+
+For more information visit [http://code.google.com/p/ears].
+
+--
+EARS -- Entity and Association Retrieval System
+Copyright (c) 2009, Krisztian Balog. All rights reserved.
