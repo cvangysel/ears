@@ -9,7 +9,7 @@ A query file may contain any number of queries. Query terms (optionally along wi
 || `<DOC qID>`<br>`term_1;weight_1`<br>`...`<br>`term_n;weight_n`<br>`</DOC>` || `<DOC q-01>`<br>`solar;0.55`<br>`energy;0.45`<br>`</DOC>` ||
 
 == Document-entity association file ==
-The syntax of the document-entity association file is controlled by the parameter `AssociationFileFormat`. 
+The syntax of the document-entity association file is controlled by the parameter `associationFileFormat`. 
 
 || *Format* || *Syntax* || *Example* || 
 || `0` (default) || `DOCNO entityID` || `Doc-01 Entity-01`<br>`Doc-01 Entity-02`<br>`Doc-02 Entity-01` ||
