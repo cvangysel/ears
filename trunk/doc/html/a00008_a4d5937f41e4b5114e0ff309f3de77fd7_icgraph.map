@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" href="$a00008.html#a70b18dfaa71c458cf7986457e54f0a78" title="Query as a SimpleKLQueryModel (caller is responsible for the deletion of the generated..." alt="" coords="217,5,361,29"/>
+<area shape="rect" href="$a00005.html#adc8a673bd767d95c87a8fc9f5b0532db" title="Implements Model 1 of Balog et. al." alt="" coords="220,53,359,77"/>
+<area shape="rect" href="$a00006.html#a5021ae090e1520dfe53ef55860cafdd8" title="Scoring all documents in the collection for a given query." alt="" coords="200,101,379,125"/>
+<area shape="rect" href="$a00006.html#a0976c276af16b4b5ccba703ad907d947" title="Implements Model 2 of Balog. et. al." alt="" coords="428,101,567,125"/>
+</map>

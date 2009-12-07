@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" href="$a00003.html#a92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID." alt="" coords="559,25,721,49"/>
+<area shape="rect" href="$a00003.html#a7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="551,175,729,199"/>
+<area shape="rect" href="$a00008.html#a6339a4e8170482354c3fd3b00c9af5e4" title="External query ID." alt="" coords="561,87,719,111"/>
+<area shape="rect" href="$a00008.html#a32feb77641bd68049743ed8d5e391aa3" title="Number of queries." alt="" coords="553,272,727,296"/>
+<area shape="rect" href="$a00007.html#a1ab4a352946f0f57c2fe7be3116214d5" title="Write p(q|e) and (internal) entityID, for a given query to result vector. Results..." alt="" coords="280,199,499,223"/>
+<area shape="rect" href="$a00007.html#a533d6bf5f5e8321127fef1f1d8e40a59" title="Write p(q|e) and (internal) queryID, for a given entity to result vector. Results..." alt="" coords="277,297,501,321"/>
+<area shape="rect" href="$a00007.html#a07f475923f969441def2069527a42c27" title="Write a result record into file." alt="" coords="288,49,491,73"/>
+</map>

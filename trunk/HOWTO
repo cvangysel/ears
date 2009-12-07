@@ -1,0 +1,93 @@
+Using EARS
+
+
+Usage will be demonstrated on the "ILPS Abstracts" data set, shipped
+with the EARS distribution.
+
+==Indexing the collection==
+
+The document collection needs to be indexed using the Lemur toolkit.
+
+   1. Change to the EARS directory
+      This step is crucial as paths are set relative to this directory.
+      Alternatively, you may edit the config files and change the paths 
+      to absolute ones.
+   2. Execute either of the two:
+      - "{Lemur_dir}/bin/IndriBuildIndex \
+         examples/ilps_abstracts/conf/IndriBuildIndex.conf \
+         examples/ilps_abstracts/stopwords/stopwords.indri"
+        for building an Indri index (preferred)
+      - "{Lemur_dir}/bin/BuildIndex \
+         examples/ilps_abstracts/conf/BuildIndex.conf "
+        for building a KeyFile index, 
+
+where {Lemur_dir} is the location of your Lemur installation. 
+
+
+==Finding and profiling entities==
+
+EARS can help you in two entity related tasks:
+
+    - *finding entities* is about retrieving entities for a query 
+      topic ("Which entities are associated with the topic?"). In our 
+      example, we rank people with respect to their expertise given a 
+      particular topical area. Therefore, for each query, a ranked 
+      list of entities (names) is returned.
+    - *entity profiling* is the other way around: for each entity we 
+      return topics ("Which topics are associated with the entity?") 
+      In our example, topics are ranked according to the person's 
+      proficiency in each. 
+
+===Syntax===
+
+The syntax of the ears program is the following: ears <command>
+<paramfile> [debug_level]
+
+Where
+
+    * <command> is either ef (for entity finding) or 
+                          ep (for entity profiling)
+    * <paramfile> is a parameter file 
+    * debug_level (optionally) is the reporting level 
+
+===Parameter files===
+
+There are sample parameter files for the two baseline models in 
+the examples/ilps_abstracts/conf directory: ears_model1.conf and 
+ears_model2.conf for Models 1 and 2, respectively.
+
+    * If you indexed the collection using a KeyFile index, you need 
+      to edit these files, and replace the line 
+      <index>examples/ilps_abstracts/index</index>
+      with <index>examples/ilps_abstracts/index/index.key</index> 
+
+===Example usage===
+
+Finding experts using Model 1:
+
+  ears ef examples/ilps_abstracts/conf/ears_model1.conf
+
+The output will look like:
+
+  Entity and Association Retrieval System (EARS) v0.9 (2009-09-09)
+  Copyright (c) 2005-2009, Krisztian Balog
+
+  Loading index 'examples/ilps_abstracts/index'
+  Loading Entity-Document associations
+'examples/ilps_abstracts/data/associations.list'
+  Loading queries 'examples/ilps_abstracts/data/queries.ldf'
+  Initializing Model 1
+  Estimating smoothing parameter
+  Calculating topic-entity associations
+  Model 1 completed
+  Writing output to 'examples/ilps_abstracts/output/model1.out'
+  Over and out
+
+
+
+For more information visit [http://code.google.com/p/ears].
+
+--
+EARS -- Entity and Association Retrieval System
+Copyright (c) 2009, Krisztian Balog. All rights reserved.
+
