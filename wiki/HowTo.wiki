@@ -21,6 +21,8 @@ You might want to check the [KnownIssues known issues] page, even if using the m
   # The build is fairly conventional. Go to the EARS directory, and type `make`
     * If you need to re-compile it for any reason, you may want to issue `make clean` and then `make` 
 
+For using EARS on Windows with Visual Studio 2008, [CompilingWithVisualStudio consult this page].
+
 =Using EARS=
 
 Usage will be demonstrated on the [ExampleDataSet "ILPS Abstracts" data set], shipped with the EARS distribution. 
