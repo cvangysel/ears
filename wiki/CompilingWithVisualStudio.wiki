@@ -1,0 +1,12 @@
+#summary Compiling Ears on Windows using Visual Studio 2008
+#labels manual,project
+
+  # Download the newest Lemur MAIN revision from [http://sourceforge.net/scm/?type=cvs&group_id=161383 Lemur CVS] (for _modulename_ use "lemur")
+    * The Lemur source version 4.10.1 cannot read the EARS example files on Windows
+  # Make sure you can compile Lemur without errors
+    * Follow [http://www.lemurproject.org/docs/index.php/Compiling_on_Windows_with_Visual_Studio these instructions] for changes you need to make to the _lemur_ini_ project 
+  # Move or copy the EARS directory inside the Lemur toolkit's directory
+  # In Visual Studio 2008 add the EARS project to the Lemur solution
+  # Click on EARS properties and select _add... > existing project... >_ then select _ears.vcproj_
+  # Click on EARS _project dependencies_ and only check _Lemur_ to make sure it will build all the needed libraries
+  # Finally, right-click on EARS and select _Build_
