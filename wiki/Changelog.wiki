@@ -15,6 +15,7 @@
     * Progress indicated
 
   * Makefile for Visual Studio 2008 (EARS.vcproj)
+    * See also: [CompilingWithVisualStudio]
 
   * Minor fixes:
     * ears.cpp: default log level 'info' needs to be lowercased
