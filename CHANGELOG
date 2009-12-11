@@ -1,0 +1,24 @@
+EARS CHANGELOG
+
+
+---++ From 0.9 to 1.0:
+
+  * Document-entity associations
+    * (Added) Support for non-binary document-entity associations
+    * (Added) Document-entity associations are normalized 
+    * (Fixed) Associations with 0 weight caused nan values for Model 1
+    
+  * Smoothing parameter estimation for Model 1
+    * Computation speeded up 
+    * Progress indicated
+
+  * Makefile for Visual Studio 2008 (EARS.vcproj)
+
+  * Minor fixes:
+    * ears.cpp: default log level 'info' needs to be lowercased
+    * Raise error in case of unknown smoothing method
+
+
+--
+EARS -- Entity and Association Retrieval System
+Copyright (c) 2009, Krisztian Balog. All rights reserved.
