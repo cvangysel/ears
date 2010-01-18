@@ -18,6 +18,6 @@ All code is in the `ears` namespace.
 =Conventions=
 
   * File names: .hpp for header files, .cpp for source files
-  * date and version in file headers refer to the last modification
+  * Date and version in file headers refer to the last modification
   * Coding style follows the guidelines put forward in http://geosoft.no/development/cppstyle.html
   * Parameters are read in and checked where they are first used
