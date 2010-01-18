@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" href="$a00005.html#a82b166121b9ba4b6c9cd3791cd75d400" title="Term counter for an entity (caller is responsible for the deletion of the generated..." alt="" coords="256,53,432,77"/>
-<area shape="rect" href="$a00003.html#a2ccbe3b416fb8995cbff5001a56f5a20" title="Number of documents associated with the entity." alt="" coords="484,5,681,29"/>
-<area shape="rect" href="$a00003.html#a7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="255,101,433,125"/>
-<area shape="rect" href="$a00003.html#a072ddf4287ac4c0b97a64202847e0284" title="Documents associated with the entity." alt="" coords="496,53,669,77"/>
-</map>
