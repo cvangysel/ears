@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog. All rights reserved.
+ * Copyright (c) 2009, Krisztian Balog and Wouter Weerkamp. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -10,8 +10,8 @@
 /*!
  * \file     EntityRep.cpp
  * \brief    Entity representation
- * \date     2009-09-09
- * \version  0.9
+ * \date     2009-12-04
+ * \version  1.0
  */
 
 // EARS
@@ -66,7 +66,10 @@ ears::EntityRep::loadAssociations( const lemur::api::Index& index )
   double weight;
   int assocNum = 0;
   int entityNum = 0;
-  
+  int docNum = 0;
+  lemur::api::IndexedRealVector pde_sum;
+  vector< DISTR_T > pde_tmp;
+
   //
   // Loading EntityAlias-EntityID mapping
   //
@@ -126,7 +129,7 @@ ears::EntityRep::loadAssociations( const lemur::api::Index& index )
         weight = 1.0;
                                 
       docID = index.document( docNO );
-      if ( docID > 0 ) {
+      if ( docID > 0 && weight > 0.0 ) {
         if ( associationFileFormat % 4 >= 2 ) { // format: 2, 3, 6, 7
           extEntityID = this->entityIDfromAlias( entityStr );          
           LOG( logDEBUG2 ) << "ENTITY ALIAS '" << entityStr << "' => ENTITY '"
@@ -150,19 +153,36 @@ ears::EntityRep::loadAssociations( const lemur::api::Index& index )
         // store document-entity association
         //
         bool wasAssoc = false; // docID-entityID association already existed
+        if( pde_sum.size() <= entityID )
+          pde_sum.resize( entityID + 1 );
+
         if ( assocIndex_ == aiENTITY ) {
-          if ( pde_.size() <= entityID )
-            pde_.resize( entityID + 1 );
-          if ( pde_[entityID][docID] > 0 )
+          if ( pde_tmp.size() <= entityID )
+            pde_tmp.resize( entityID + 1 );
+          if ( pde_tmp[entityID][docID] > 0 ) {
             wasAssoc = true;
-          pde_[entityID][docID] = weight;          
+            LOG( logWARNING ) << "ENTITY '" << extEntityID 
+              << "' and DOC '" << docNO 
+              << "' already have an association; using first occurrence.";
+          } else {
+            pde_tmp[entityID][docID] = weight;
+            pde_sum.IncreaseValueFor( entityID, weight );
+          }
         }
         if ( assocIndex_ == aiDOCUMENT ) {
-          if ( pde_.size() <= docID )
-            pde_.resize( docID + 1 );
-          if ( pde_[docID][entityID] > 0 )
+          if ( pde_tmp.size() <= docID ) {
+            pde_tmp.resize( docID + 1 );
+            docNum = docID + 1;
+          }
+          if ( pde_tmp[docID][entityID] > 0 ) {
             wasAssoc = true;
-          pde_[docID][entityID] = weight;                    
+            LOG( logWARNING ) << "ENTITY '" << extEntityID 
+              << "' and DOC '" << docNO 
+              << "' already have an association; using first occurrence.";
+          } else {
+            pde_tmp[docID][entityID] = weight;
+            pde_sum.IncreaseValueFor( entityID, weight );
+          }
         }
 
         if ( !wasAssoc ) {
@@ -182,10 +202,14 @@ ears::EntityRep::loadAssociations( const lemur::api::Index& index )
         LOG( logDEBUG2 ) << "ENTITY: '" << extEntityID << "' (ID " << entityID
           << ")   DOC: '" << docNO << "' (ID " << docID << ")   WEIGHT: "
           << weight;      
-      } // docID > 0
+      } // docID > 0 && weight > 0.0
       else {
-        LOG( logWARNING ) << "Document '" << docNO << "' does not exist in index"
-        << " (association ignored)";
+        if ( !(docID > 0) )
+          LOG( logWARNING ) << "Document '" << docNO << "' does not exist "
+            << "in index (association ignored)";
+        if ( !(weight > 0.0) )
+          LOG( logWARNING ) << "Association (" << docNO << "-" << entityStr 
+            << ") with 0.0 weight (ignored)";
       }
       
       if ( associationFileFormat % 2 == 0 ) // format: 0, 2, 4, 6
@@ -195,9 +219,58 @@ ears::EntityRep::loadAssociations( const lemur::api::Index& index )
     
     } // !inFile.eof()
     inFile.close();    
-    
+
     LOG( logDEBUG ) << entityNum << " unique entities";
     LOG( logDEBUG ) << assocNum << " document-entity associations";
+    
+    //
+    // normalize associations
+    // p(d|e) = assoc(d|e) / \sum_d'[ assoc(d'|e) ]
+    // 
+    LOG( logINFO ) << "Normalizing Entity-Document associations";
+    int nAssocNum = 0;
+    
+    // document-oriented storage
+    if ( assocIndex_ == aiDOCUMENT ) {
+      pde_.resize( docNum );
+
+      for ( ID_T nDocID = 1; nDocID < pde_tmp.size(); nDocID++ ) {
+        DISTR_T npde = pde_tmp[nDocID];
+        if( npde.size() > 0 ) {
+          for ( DISTR_T::const_iterator nit = npde.begin(); nit != npde.end(); nit++ ) {
+            int nEntityID = nit->first;
+            double nWeight = ((double) nit->second) 
+                             / ((double) pde_sum.FindByIndex(nEntityID)->val);
+            pde_[nDocID][nEntityID] = nWeight;
+            nAssocNum++;
+          }
+          pde_tmp[nDocID].clear();
+        }
+      }
+    }
+        
+    // entity-oriented storage
+    if ( assocIndex_ == aiENTITY ) {
+      pde_.resize( entityNum );
+
+      for ( ID_T nEntityID; nEntityID < pde_tmp.size(); nEntityID++ ) {
+        DISTR_T npde = pde_tmp[nEntityID];
+        for ( DISTR_T::const_iterator nit = npde.begin(); nit != npde.end(); nit++ ) {
+          int nDocID = nit->first;
+          double nWeight = ((double) nit->second)
+                           / ((double) pde_sum.FindByIndex(nEntityID)->val);
+          pde_[nEntityID][nDocID] = nWeight;
+          nAssocNum++;
+        }
+        pde_tmp[nEntityID].clear();
+      }
+    }
+
+    pde_tmp.clear();
+    pde_sum.clear();
+    
+    LOG( logDEBUG ) << nAssocNum << " associations after normalization";
+    
   } // inFile.open()
   else {
     LOG( logERROR ) << "Association file '" << associationFile << "' does not exist";

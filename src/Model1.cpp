@@ -10,8 +10,8 @@
 /*!
  * \file     Model1.cpp
  * \brief    The "Model 1" association finding model
- * \date     2009-09-09
- * \version  0.9
+ * \date     2009-12-04
+ * \version  1.0
  */
 
 // EARS
@@ -22,6 +22,7 @@
 #include "IndexedReal.hpp"
 #include "TextQueryRep.hpp"
 #include "UnigramLM.hpp"
+#include "DocUnigramCounter.hpp"
 
 #include <math.h> // C
 
@@ -31,7 +32,7 @@ void
 ears::Model1::init()
 {
   LOG( logINFO ) << "Initializing Model 1";
-  LOG( logDEBUG ) << "version 0.9 (last mod. 2009-09-09)";
+  LOG( logDEBUG ) << "version 1.0 (last mod. 2009-12-04)";
   
   // smoothing 
   initSmoothing();
@@ -47,14 +48,26 @@ ears::Model1::setSmoothingAuto()
 {
   double sum_ne;
   int entityNum = 0;
+  int progress = 0;
+  int lastProgress = 0;
   for ( ID_T entityID = 0; entityID < entities_.entityNum(); entityID++ ) {    
+    // indicate progress    
+    progress = 100 * ( entityID + 1 ) / entities_.entityNum();
+    if ( progress % 10 == 0 && progress > lastProgress ) {
+      LOG( logDEBUG ) << progress << "% completed";
+      lastProgress = progress;
+    }
     // we ignore entities without any associated documents
     if ( entities_.entityDocNum( entityID ) > 0 ) {
-      lemur::langmod::DocUnigramCounter* entityCounter 
-        = this->entityCounter( entityID );      
-      sum_ne += (double) entityCounter->sum(); // n(e)
+      double ne = 0.0;
+      const DISTR_T& pde = entities_.entityDocs( entityID );
+      
+      // n(e) = \sum_d (n(d) * p(d|e))
+      for ( DISTR_T::const_iterator it=pde.begin(); it != pde.end(); it++ ) 
+        ne += (double) index_.docLength( it->first ) * it->second;
+      
+      sum_ne += ne;
       entityNum++;
-      delete entityCounter;
     }
   }
   
@@ -119,8 +132,8 @@ ears::Model1::scoreAll()
       LOG( logDEBUG2 ) << "Creating model based on " 
         << entityDocNum << " associated documents";
       
-      lemur::langmod::DocUnigramCounter* entityCounter 
-        = this->entityCounter( entityID );      
+      ears::DoubleDocUnigramCounter* entityCounter 
+        = this->entityCounter( entityID );
       double ne = (double) entityCounter->sum(); // n(e)
       
       LOG( logDEBUG2 ) << "Scoring queries";
@@ -190,24 +203,26 @@ ears::Model1::scoreAll()
 
 
 ///
-lemur::langmod::DocUnigramCounter* 
+ears::DoubleDocUnigramCounter* 
 ears::Model1::entityCounter( const ID_T& entityID )
 {
   lemur::api::IndexedRealVector irv;
   const DISTR_T& pde = entities_.entityDocs( entityID );
 
+  // consider all documents associated with the entity
   for ( DISTR_T::const_iterator it=pde.begin(); it != pde.end(); it++ ) 
     irv.PushValue( it->first, it->second );
   
-  int docNum = entities_.entityDocNum( entityID );
   lemur::api::PseudoFBDocs* entityDocs = 
-    new lemur::api::PseudoFBDocs( irv, docNum, false );  
+    new lemur::api::PseudoFBDocs( irv, -1, false );
   
-  lemur::langmod::DocUnigramCounter* counter
-    = new lemur::langmod::DocUnigramCounter( *entityDocs, index_ );
+  ears::DoubleDocUnigramCounter* counter
+    = new ears::DoubleDocUnigramCounter( *entityDocs, index_ );
   
   irv.clear();
   delete entityDocs;
   
   return counter;
 }
+
+
