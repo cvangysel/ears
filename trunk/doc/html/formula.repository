@@ -2,29 +2,30 @@
 \form#1:$ n(e) $
 \form#2:$ e $
 \form#3:$ |e| $
-\form#4:$ p(q|\theta_e) $
-\form#5:$ q $
-\form#6:$ p(t|\theta_e) $
-\form#7:$ \log p(q|\theta_e) = \sum_{t \in q} p(t|q) \cdot \log p(t|\theta_e) $
-\form#8:$ p(t|q) $
-\form#9:$ t $
-\form#10:$ p(t|\theta_e) = (1-\lambda) \cdot (n(t,e)/n(e)) + \lambda \cdot p(t) $
-\form#11:$ p(t|\theta_e) = (n(t,e) + \beta \cdot p(t)) / (n(e) + \beta) $
-\form#12:$ n(t,e) $
-\form#13:$ n(e) = \sum_t n(t,e) $
-\form#14:$ p(t) $
-\form#15:$ n(t,e) = \sum_{D_e} n(t,d) \cdot p(d|e) $
-\form#16:$ {D_e} $
-\form#17:$ p(d|e) $
-\form#18:$ d $
-\form#19:$ \beta = \frac{\sum_d n(d)}{|d|} $
-\form#20:$ n(d) $
-\form#21:$ |d| $
-\form#22:$ p(q|e) $
-\form#23:$ D_q $
-\form#24:$ p(q|d) $
-\form#25:$ d \in D_q $
-\form#26:$ p(d|e) > 0 $
-\form#27:$ p(q|e) += p(q|d) \cdot p(d|e) $
-\form#28:$ \beta $
-\form#29:$ \lambda $
+\form#4:$ \sum_{D_e} n(d) \cdot p(d|e) $
+\form#5:$ n(d) $
+\form#6:$ d $
+\form#7:$ p(q|\theta_e) $
+\form#8:$ q $
+\form#9:$ p(t|\theta_e) $
+\form#10:$ \log p(q|\theta_e) = \sum_{t \in q} p(t|q) \cdot \log p(t|\theta_e) $
+\form#11:$ p(t|q) $
+\form#12:$ t $
+\form#13:$ p(t|\theta_e) = (1-\lambda) \cdot (n(t,e)/n(e)) + \lambda \cdot p(t) $
+\form#14:$ p(t|\theta_e) = (n(t,e) + \beta \cdot p(t)) / (n(e) + \beta) $
+\form#15:$ n(t,e) $
+\form#16:$ n(e) = \sum_t n(t,e) $
+\form#17:$ p(t) $
+\form#18:$ n(t,e) = \sum_{D_e} n(t,d) \cdot p(d|e) $
+\form#19:$ {D_e} $
+\form#20:$ p(d|e) $
+\form#21:$ \beta = \frac{\sum_d n(d)}{|d|} $
+\form#22:$ |d| $
+\form#23:$ p(q|e) $
+\form#24:$ D_q $
+\form#25:$ p(q|d) $
+\form#26:$ d \in D_q $
+\form#27:$ p(d|e) > 0 $
+\form#28:$ p(q|e) += p(q|d) \cdot p(d|e) $
+\form#29:$ \beta $
+\form#30:$ \lambda $
