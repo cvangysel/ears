@@ -10,8 +10,8 @@
 /*!
  * \file     ears.cpp
  * \brief    This file is the entry point for the console application
- * \date     2009-09-09
- * \version  0.9
+ * \date     2009-12-04
+ * \version  1.0
  */
 
 /*! \mainpage 
@@ -90,7 +90,7 @@ using namespace ears;
 ///
 void info() {
   std::cerr 
-    << "Entity and Association Retrieval System (EARS) v0.9 (2009-09-09)" << std::endl
+    << "Entity and Association Retrieval System (EARS) v1.0 (2009-12-04)" << std::endl
     << "Copyright (c) 2009, Krisztian Balog. All rights reserved." << std::endl 
     << std::endl;
 }
@@ -124,7 +124,7 @@ int main(int argc, char* argv[]) {
   
   try {    
     // log level
-    ears::EARSLog::reportingLevel() = ears::EARSLog::fromString( argv[3] ? argv[3] : "INFO" );
+    ears::EARSLog::reportingLevel() = ears::EARSLog::fromString( argv[3] ? argv[3] : "info" );
     
     if ( lemur::api::ParamPushFile( argv[2] ) ) {      
       ears::AssociationFramework* framework = new ears::AssociationFramework();      

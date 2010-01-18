@@ -10,8 +10,8 @@
 /*!
  * \file     AssociationModel.cpp
  * \brief    Abstract interface for an association finding model
- * \date     2009-09-09
- * \version  0.9
+ * \date     2009-12-04
+ * \version  1.0
  */
 
 // EARS
@@ -32,6 +32,10 @@ void ears::AssociationModel::initSmoothing()
   smoothingMethod_ = lemur::api::ParamGetString( "smoothingMethod" );
   smoothingParam_ = lemur::api::ParamGetDouble( "smoothingParam", 0.0 );
   
+  // default is Dirichlet smoothing
+  if ( smoothingMethod_ == "" ) 
+     smoothingMethod_ = "dirichlet";
+  
   // setting smoothing parameter automatically
   // (if auto smoothing then it's always Dirichlet smoothing)
   if ( smoothingParam_ == 0.0 ) {
@@ -46,10 +50,14 @@ void ears::AssociationModel::initSmoothing()
     smethod = "Dirichlet";
     sparam = "beta";
   }
-  if ( smoothingMethod_ == "jm" ) { // Jelinek-Mercer
+  else if ( smoothingMethod_ == "jm" ) { // Jelinek-Mercer
     smethod = "Jelinek-Mercer";
     sparam = "lambda";
   }  
+  else {
+    LOG( logERROR ) << "Unknown smoothing method '" << smoothingMethod_ << "'";
+    exit( EXIT_FAILURE );
+  }
   
   if ( autoSmoothing )
     sparam += ", auto";
