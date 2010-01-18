@@ -10,8 +10,8 @@
 /*!
  * \file     Model1.hpp
  * \brief    The "Model 1" association finding model
- * \date     2009-09-09
- * \version  0.9
+ * \date     2009-12-04
+ * \version  1.0
  */
 
 #ifndef _MODEL1_HPP
@@ -19,10 +19,7 @@
 
 // EARS
 #include "AssociationModel.hpp"
-
-// Lemur
-#include "DocUnigramCounter.hpp"
-
+#include "DoubleDocUnigramCounter.hpp"
 
 namespace ears {
   
@@ -47,6 +44,9 @@ namespace ears {
      * \f$ \beta = \frac{\sum_e n(e)}{|e|} \f$,
      * where \f$ n(e) \f$ is the number of terms associated with 
      * entity \f$ e \f$, and \f$ |e| \f$ is the total number of entities.
+     *
+     * \f$ n(e) \f$ is approximated using \f$ \sum_{D_e} n(d) \cdot p(d|e) \f$,
+     * where \f$ n(d) \f$ is the length of document \f$ d \f$.
      */
     void setSmoothingAuto();
 
@@ -96,7 +96,7 @@ namespace ears {
     /*!
      * @param entityID Entity ID
      */
-    lemur::langmod::DocUnigramCounter* entityCounter( const ID_T& entityID );
+    DoubleDocUnigramCounter* entityCounter( const ID_T& entityID );
     
   };
 }

@@ -10,8 +10,8 @@
 /*!
  * \file     EntityRep.hpp
  * \brief    Entity representation
- * \date     2009-09-09
- * \version  0.9
+ * \date     2009-12-04
+ * \version  1.0
  */
 
 #ifndef _ENTITYREP_HPP
@@ -22,7 +22,7 @@
 
 // Lemur
 #include "Index.hpp"
-
+#include "IndexedReal.hpp"
 
 namespace ears {
   
