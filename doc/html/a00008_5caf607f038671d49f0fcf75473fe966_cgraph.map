@@ -1,0 +1,7 @@
+<area shape="rect" href="$a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID." alt="" coords="655,13,847,40">
+<area shape="rect" href="$a00004.html#7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="645,191,856,217">
+<area shape="rect" href="$a00009.html#6339a4e8170482354c3fd3b00c9af5e4" title="External query ID." alt="" coords="653,89,848,116">
+<area shape="rect" href="$a00009.html#32feb77641bd68049743ed8d5e391aa3" title="Number of queries." alt="" coords="643,267,859,293">
+<area shape="rect" href="$a00008.html#1ab4a352946f0f57c2fe7be3116214d5" title="Write p(q|e) and (internal) entityID, for a given query to result vector. Results..." alt="" coords="332,203,591,229">
+<area shape="rect" href="$a00008.html#533d6bf5f5e8321127fef1f1d8e40a59" title="Write p(q|e) and (internal) queryID, for a given entity to result vector. Results..." alt="" coords="329,304,593,331">
+<area shape="rect" href="$a00008.html#07f475923f969441def2069527a42c27" title="Write a result record into file." alt="" coords="339,51,584,77">
