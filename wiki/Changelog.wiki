@@ -3,6 +3,17 @@
 
 = EARS Changelog =
 
+== From 1.0 to 1.05 ==
+
+  * Collecting statistics about basic operations involved in the computations of the models 
+    * See: [Stat]
+
+  * Examples for expertise retrieval on the UvT expert collection
+    * See: `examples/uvt/README`
+
+  * (Fixed) Uninitialized variables
+
+
 == From 0.9 to 1.0 ==
 
   * Document-entity associations
