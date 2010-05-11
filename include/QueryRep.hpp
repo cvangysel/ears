@@ -72,7 +72,7 @@ namespace ears {
       
       /// Queries
       /// (i.e., ptq_[q] holds p(t|q) for query q)
-      std::vector< DISTR_T> ptq_;
+      std::vector< DISTR_T > ptq_;
       
       /// External query IDs
       std::vector< EXID_T > queryID_;

@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog and Wouter Weerkamp. All rights reserved.
+ * Copyright (c) 2009-2010, Krisztian Balog and Wouter Weerkamp. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -10,8 +10,8 @@
 /*!
  * \file     EntityRep.cpp
  * \brief    Entity representation
- * \date     2009-12-04
- * \version  1.0
+ * \date     2010-05-07
+ * \version  1.05
  */
 
 // EARS
@@ -253,7 +253,7 @@ ears::EntityRep::loadAssociations( const lemur::api::Index& index )
     if ( assocIndex_ == aiENTITY ) {
       pde_.resize( entityNum );
 
-      for ( ID_T nEntityID; nEntityID < pde_tmp.size(); nEntityID++ ) {
+      for ( ID_T nEntityID = 0; nEntityID < pde_tmp.size(); nEntityID++ ) {
         DISTR_T npde = pde_tmp[nEntityID];
         for ( DISTR_T::const_iterator nit = npde.begin(); nit != npde.end(); nit++ ) {
           int nDocID = nit->first;

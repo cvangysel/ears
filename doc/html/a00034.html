@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>EARS: AssociationModel.cpp Source File</title>
+<title>EARS: AssociationFramework.cpp Source File</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -13,8 +13,8 @@
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
-<h1>AssociationModel.cpp</h1><a href="a00012.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009, Krisztian Balog. All rights reserved.</span>
+<h1>AssociationFramework.cpp</h1><a href="a00011.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> * Use of the Entity and Association Retrieval System (EARS) </span>
 <a name="l00005"></a>00005 <span class="comment"> * is subject to the terms of the software license set forth </span>
@@ -23,57 +23,111 @@
 <a name="l00008"></a>00008 <span class="comment"> */</span>
 <a name="l00009"></a>00009 
 <a name="l00017"></a>00017 <span class="comment">// EARS</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include "<a class="code" href="a00013.html" title="Abstract interface for an association finding model.">AssociationModel.hpp</a>"</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include "<a class="code" href="a00020.html" title="Event logger.">Logger.hpp</a>"</span>
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="comment">// Lemur</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include "Param.hpp"</span>
-<a name="l00023"></a>00023 
+<a name="l00018"></a>00018 <span class="preprocessor">#include "<a class="code" href="a00012.html" title="Association finding framework.">AssociationFramework.hpp</a>"</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include "<a class="code" href="a00014.html" title="Abstract interface for an association finding model.">AssociationModel.hpp</a>"</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include "<a class="code" href="a00021.html" title="Event logger.">Logger.hpp</a>"</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include "<a class="code" href="a00023.html" title="The &amp;quot;Model 1&amp;quot; association finding model.">Model1.hpp</a>"</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include "<a class="code" href="a00025.html" title="The &amp;quot;Model 2&amp;quot; association finding model.">Model2.hpp</a>"</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="a00027.html" title="Writing results to output.">OutputWriter.hpp</a>"</span>
 <a name="l00024"></a>00024 
-<a name="l00026"></a><a class="code" href="a00002.html#34e26154c45608675f94d3b2d8d72875">00026</a> <span class="keywordtype">void</span> <a class="code" href="a00002.html#34e26154c45608675f94d3b2d8d72875" title="Init smoothing settings.">ears::AssociationModel::initSmoothing</a>()
-<a name="l00027"></a>00027 {
-<a name="l00028"></a>00028   std::string smethod;
-<a name="l00029"></a>00029   std::string sparam;
-<a name="l00030"></a>00030   <span class="keywordtype">bool</span> autoSmoothing = <span class="keyword">false</span>;
-<a name="l00031"></a>00031   
-<a name="l00032"></a>00032   <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> = lemur::api::ParamGetString( <span class="stringliteral">"smoothingMethod"</span> );
-<a name="l00033"></a>00033   <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a> = lemur::api::ParamGetDouble( <span class="stringliteral">"smoothingParam"</span>, 0.0 );
-<a name="l00034"></a>00034   
-<a name="l00035"></a>00035   <span class="comment">// default is Dirichlet smoothing</span>
-<a name="l00036"></a>00036   <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> == <span class="stringliteral">""</span> ) 
-<a name="l00037"></a>00037      <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> = <span class="stringliteral">"dirichlet"</span>;
-<a name="l00038"></a>00038   
-<a name="l00039"></a>00039   <span class="comment">// setting smoothing parameter automatically</span>
-<a name="l00040"></a>00040   <span class="comment">// (if auto smoothing then it's always Dirichlet smoothing)</span>
-<a name="l00041"></a>00041   <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a> == 0.0 ) {
-<a name="l00042"></a>00042     LOG( logINFO ) &lt;&lt; <span class="stringliteral">"Estimating smoothing parameter (automatically)"</span>;
-<a name="l00043"></a>00043     autoSmoothing = <span class="keyword">true</span>;
-<a name="l00044"></a>00044     <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> = <span class="stringliteral">"dirichlet"</span>;
-<a name="l00045"></a>00045     this-&gt;<a class="code" href="a00002.html#611a283114e5f7cbb338fbfe45068f58" title="Set smoothing parameter automatically.">setSmoothingAuto</a>();
+<a name="l00025"></a>00025 <span class="comment">// Lemur</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include "IndexManager.hpp"</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include "Param.hpp"</span>
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 
+<a name="l00031"></a>00031 <span class="keywordtype">void</span> 
+<a name="l00032"></a><a class="code" href="a00001.html#940a12dad2aadb569ad6fa847f6399c7">00032</a> <a class="code" href="a00001.html#940a12dad2aadb569ad6fa847f6399c7" title="Perform a selected task.">ears::AssociationFramework::run</a>( std::string task )
+<a name="l00033"></a>00033 {
+<a name="l00034"></a>00034   <span class="comment">//</span>
+<a name="l00035"></a>00035   <span class="comment">// load parameters</span>
+<a name="l00036"></a>00036   <span class="comment">//</span>
+<a name="l00037"></a>00037   <span class="keywordflow">if</span> ( task != <span class="stringliteral">"ef"</span> &amp;&amp; task != <span class="stringliteral">"ep"</span> ) {
+<a name="l00038"></a>00038     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"unsupported task: '"</span> &lt;&lt; task &lt;&lt; <span class="stringliteral">"'"</span>;
+<a name="l00039"></a>00039     exit( EXIT_FAILURE );
+<a name="l00040"></a>00040   }  
+<a name="l00041"></a>00041   
+<a name="l00042"></a>00042   std::string modelname = lemur::api::ParamGetString( <span class="stringliteral">"model"</span> );
+<a name="l00043"></a>00043   <span class="keywordflow">if</span> ( modelname.length() == 0 ) {
+<a name="l00044"></a>00044     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"Parameter 'model' is not set"</span>;
+<a name="l00045"></a>00045     exit( EXIT_FAILURE );    
 <a name="l00046"></a>00046   }
-<a name="l00047"></a>00047   
-<a name="l00048"></a>00048   <span class="comment">// display smoothing method and parameter  </span>
-<a name="l00049"></a>00049   <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> == <span class="stringliteral">"dirichlet"</span> ) { <span class="comment">// Dirichlet</span>
-<a name="l00050"></a>00050     smethod = <span class="stringliteral">"Dirichlet"</span>;
-<a name="l00051"></a>00051     sparam = <span class="stringliteral">"beta"</span>;
-<a name="l00052"></a>00052   }
-<a name="l00053"></a>00053   <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> == <span class="stringliteral">"jm"</span> ) { <span class="comment">// Jelinek-Mercer</span>
-<a name="l00054"></a>00054     smethod = <span class="stringliteral">"Jelinek-Mercer"</span>;
-<a name="l00055"></a>00055     sparam = <span class="stringliteral">"lambda"</span>;
-<a name="l00056"></a>00056   }  
-<a name="l00057"></a>00057   <span class="keywordflow">else</span> {
-<a name="l00058"></a>00058     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"Unknown smoothing method '"</span> &lt;&lt; <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> &lt;&lt; <span class="stringliteral">"'"</span>;
-<a name="l00059"></a>00059     exit( EXIT_FAILURE );
-<a name="l00060"></a>00060   }
-<a name="l00061"></a>00061   
-<a name="l00062"></a>00062   <span class="keywordflow">if</span> ( autoSmoothing )
-<a name="l00063"></a>00063     sparam += <span class="stringliteral">", auto"</span>;
-<a name="l00064"></a>00064   
-<a name="l00065"></a>00065   LOG( logDEBUG ) &lt;&lt; <span class="stringliteral">"Smoothing method: "</span> &lt;&lt; smethod; 
-<a name="l00066"></a>00066   LOG( logDEBUG ) &lt;&lt; <span class="stringliteral">"Smoothing parameter ("</span> &lt;&lt; sparam &lt;&lt; <span class="stringliteral">"): "</span> &lt;&lt; <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a>;
-<a name="l00067"></a>00067 }
+<a name="l00047"></a>00047   <span class="keywordflow">if</span> ( modelname != <span class="stringliteral">"1"</span> &amp;&amp; modelname != <span class="stringliteral">"2"</span> ) {
+<a name="l00048"></a>00048     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"Unknown model '"</span> &lt;&lt; modelname &lt;&lt; <span class="stringliteral">"'. Valid values: 1 or 2"</span>;
+<a name="l00049"></a>00049     exit( EXIT_FAILURE );            
+<a name="l00050"></a>00050   }
+<a name="l00051"></a>00051   
+<a name="l00052"></a>00052   <span class="comment">// init stat collector</span>
+<a name="l00053"></a>00053   <a class="code" href="a00001.html#844ee7fae2b49cfade2c92256cb81312" title="Stat collector.">stat_</a> = <span class="keyword">new</span> <a class="code" href="a00010.html" title="Collecting and calculating statistics.">Stat</a>();
+<a name="l00054"></a>00054   
+<a name="l00055"></a>00055   <span class="comment">//</span>
+<a name="l00056"></a>00056   <span class="comment">// load index</span>
+<a name="l00057"></a>00057   <span class="comment">//</span>
+<a name="l00058"></a>00058   std::string indexFile = lemur::api::ParamGetString( <span class="stringliteral">"index"</span> );
+<a name="l00059"></a>00059   <span class="keywordflow">if</span> ( indexFile.length() == 0 ) {
+<a name="l00060"></a>00060     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"Parameter 'index' is not set"</span>;
+<a name="l00061"></a>00061     exit( EXIT_FAILURE );    
+<a name="l00062"></a>00062   }
+<a name="l00063"></a>00063   LOG( logINFO ) &lt;&lt; <span class="stringliteral">"Loading index '"</span> &lt;&lt; indexFile &lt;&lt; <span class="stringliteral">"'"</span>;
+<a name="l00064"></a>00064   <span class="keywordflow">try</span> {    
+<a name="l00065"></a>00065     <a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a> = lemur::api::IndexManager::openIndex( indexFile );    
+<a name="l00066"></a>00066   }
+<a name="l00067"></a>00067   <span class="keywordflow">catch</span> ( <span class="keyword">const</span> lemur::api::Exception&amp; e ) {
+<a name="l00068"></a>00068     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"Can't open index, check parameter index"</span>;
+<a name="l00069"></a>00069     exit( EXIT_FAILURE );
+<a name="l00070"></a>00070   }      
+<a name="l00071"></a>00071   LOG( logDEBUG ) &lt;&lt; <a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a>-&gt;docCount() &lt;&lt; <span class="stringliteral">" documents"</span>;
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073   <span class="comment">//</span>
+<a name="l00074"></a>00074   <span class="comment">// load associations; note that they depend on the model</span>
+<a name="l00075"></a>00075   <span class="comment">// </span>
+<a name="l00076"></a>00076   <span class="keywordflow">if</span> ( modelname == <span class="stringliteral">"1"</span> )   
+<a name="l00077"></a>00077     <a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a> = <span class="keyword">new</span> <a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>( EntityRep::aiENTITY );
+<a name="l00078"></a>00078   <span class="keywordflow">if</span> ( modelname == <span class="stringliteral">"2"</span> )
+<a name="l00079"></a>00079     <a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a> = <span class="keyword">new</span> <a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>( EntityRep::aiDOCUMENT );
+<a name="l00080"></a>00080   <a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a>-&gt;<a class="code" href="a00004.html#6b0233908ef09751b51710c511f5b121" title="Load entities and document-entity associations.">loadAssociations</a>( *<a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a> );
+<a name="l00081"></a>00081   
+<a name="l00082"></a>00082   <span class="comment">//</span>
+<a name="l00083"></a>00083   <span class="comment">// load queries</span>
+<a name="l00084"></a>00084   <span class="comment">//</span>
+<a name="l00085"></a>00085   <a class="code" href="a00001.html#53e3ef1a5c67e44058edac5dbe6aa266" title="Query representation.">queries_</a> = <span class="keyword">new</span> <a class="code" href="a00009.html" title="Query representation.">QueryRep</a>();
+<a name="l00086"></a>00086   <a class="code" href="a00001.html#53e3ef1a5c67e44058edac5dbe6aa266" title="Query representation.">queries_</a>-&gt;<a class="code" href="a00009.html#13cc8cef31fc849edef92b35429fa11a" title="Load queries.">loadQueries</a>( *<a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a> );
+<a name="l00087"></a>00087   
+<a name="l00088"></a>00088   <span class="comment">//</span>
+<a name="l00089"></a>00089   <span class="comment">// Run model, i.e,. calculate p(q|e) for all queries and entities</span>
+<a name="l00090"></a>00090   <span class="comment">//</span>
+<a name="l00091"></a>00091   <a class="code" href="a00002.html" title="Abstract interface for an association finding model.">AssociationModel</a>* model;
+<a name="l00092"></a>00092   <span class="keywordflow">if</span> ( modelname == <span class="stringliteral">"1"</span> ) 
+<a name="l00093"></a>00093     model = <span class="keyword">new</span> <a class="code" href="a00006.html" title="The &amp;quot;Model 1&amp;quot; association finding model.">Model1</a>( *<a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a>, *<a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a>, *<a class="code" href="a00001.html#53e3ef1a5c67e44058edac5dbe6aa266" title="Query representation.">queries_</a>, *<a class="code" href="a00001.html#844ee7fae2b49cfade2c92256cb81312" title="Stat collector.">stat_</a> );
+<a name="l00094"></a>00094   <span class="keywordflow">if</span> ( modelname == <span class="stringliteral">"2"</span> )
+<a name="l00095"></a>00095     model = <span class="keyword">new</span> <a class="code" href="a00007.html" title="The &amp;quot;Model 2&amp;quot; association finding model.">Model2</a>( *<a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a>, *<a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a>, *<a class="code" href="a00001.html#53e3ef1a5c67e44058edac5dbe6aa266" title="Query representation.">queries_</a>, *<a class="code" href="a00001.html#844ee7fae2b49cfade2c92256cb81312" title="Stat collector.">stat_</a> );
+<a name="l00096"></a>00096   model-&gt;<a class="code" href="a00002.html#792aaaa6abe5e4572cac37e5819ba042" title="Initialization. Must be called before scoreAll().">init</a>();
+<a name="l00097"></a>00097   ASSOCRES_T pqe = model-&gt;<a class="code" href="a00002.html#9150f1e15e363fb6aadd12d15281e24a" title="Run model to determine p(q|e) for all queries and entities.">scoreAll</a>();  
+<a name="l00098"></a>00098   <span class="keyword">delete</span> model;
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100   <span class="comment">//</span>
+<a name="l00101"></a>00101   <span class="comment">// write output</span>
+<a name="l00102"></a>00102   <span class="comment">//</span>
+<a name="l00103"></a>00103   <a class="code" href="a00008.html" title="Writing results to output.">OutputWriter</a>* output = <span class="keyword">new</span> <a class="code" href="a00008.html" title="Writing results to output.">OutputWriter</a>( *<a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a>, *<a class="code" href="a00001.html#53e3ef1a5c67e44058edac5dbe6aa266" title="Query representation.">queries_</a> );
+<a name="l00104"></a>00104   output-&gt;<a class="code" href="a00008.html#5caf607f038671d49f0fcf75473fe966" title="Output topic-entity associations.">outputAssocRes</a>( task, pqe );
+<a name="l00105"></a>00105   <span class="keyword">delete</span> output;
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107   <span class="comment">//</span>
+<a name="l00108"></a>00108   <span class="comment">// output collected statistics (only in debug mode)</span>
+<a name="l00109"></a>00109   <span class="comment">//</span>
+<a name="l00110"></a>00110   <a class="code" href="a00001.html#844ee7fae2b49cfade2c92256cb81312" title="Stat collector.">stat_</a>-&gt;<a class="code" href="a00010.html#872e5a943308dabcc94cf126e73cbfcb" title="Output statistics.">outputStat</a>();
+<a name="l00111"></a>00111   
+<a name="l00112"></a>00112   <span class="comment">//</span>
+<a name="l00113"></a>00113   <span class="comment">// clean up</span>
+<a name="l00114"></a>00114   <span class="comment">//</span>
+<a name="l00115"></a>00115   pqe.clear();
+<a name="l00116"></a>00116   <span class="keyword">delete</span> <a class="code" href="a00001.html#6145651d1820d48de0df38c69eca199e" title="Entity representation.">entities_</a>;
+<a name="l00117"></a>00117   <span class="keyword">delete</span> <a class="code" href="a00001.html#53e3ef1a5c67e44058edac5dbe6aa266" title="Query representation.">queries_</a>;
+<a name="l00118"></a>00118   <span class="keyword">delete</span> <a class="code" href="a00001.html#564bf84ecd6382ba346f172242cb0a8a" title="Lemur index.">index_</a>;  
+<a name="l00119"></a>00119   
+<a name="l00120"></a>00120   LOG( logINFO ) &lt;&lt; <span class="stringliteral">"Over and out"</span>;
+<a name="l00121"></a>00121 }
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:40 2009 for EARS by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:38 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

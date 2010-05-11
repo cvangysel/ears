@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog. All rights reserved.
+ * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -79,6 +79,7 @@
 #include "AssociationFramework.hpp"
 #include "DataTypes.hpp"
 #include "Logger.hpp"
+#include "Stat.hpp"
 
 // Lemur
 #include "Param.hpp"
@@ -90,8 +91,8 @@ using namespace ears;
 ///
 void info() {
   std::cerr 
-    << "Entity and Association Retrieval System (EARS) v1.0 (2009-12-04)" << std::endl
-    << "Copyright (c) 2009, Krisztian Balog. All rights reserved." << std::endl 
+    << "Entity and Association Retrieval System (EARS) v1.05 (2010-01-18)" << std::endl
+    << "Copyright (c) 2009-2010, Krisztian Balog. All rights reserved." << std::endl 
     << std::endl;
 }
 

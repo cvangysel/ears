@@ -9,7 +9,7 @@
 
 
 # Lemur installation
-Lemur_dir = PATH_TO_LEMUR
+Lemur_dir = /scratch/kbalog/lemur-4.8
 
 #%.o: %.cpp
 #	$(CXX) $(CXXFLAGS) -o $@ -c $<

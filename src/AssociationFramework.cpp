@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog. All rights reserved.
+ * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -10,8 +10,8 @@
 /*!
  * \file     AssociationFramework.cpp
  * \brief    Association finding framework
- * \date     2009-09-09
- * \version  0.9
+ * \date     2010-01-18
+ * \version  1.05
  */
 
 // EARS
@@ -48,6 +48,9 @@ ears::AssociationFramework::run( std::string task )
     LOG( logERROR ) << "Unknown model '" << modelname << "'. Valid values: 1 or 2";
     exit( EXIT_FAILURE );            
   }
+  
+  // init stat collector
+  stat_ = new Stat();
   
   //
   // load index
@@ -87,9 +90,9 @@ ears::AssociationFramework::run( std::string task )
   //
   AssociationModel* model;
   if ( modelname == "1" ) 
-    model = new Model1( *index_, *entities_, *queries_ );
+    model = new Model1( *index_, *entities_, *queries_, *stat_ );
   if ( modelname == "2" )
-    model = new Model2( *index_, *entities_, *queries_ );
+    model = new Model2( *index_, *entities_, *queries_, *stat_ );
   model->init();
   ASSOCRES_T pqe = model->scoreAll();  
   delete model;
@@ -101,6 +104,11 @@ ears::AssociationFramework::run( std::string task )
   output->outputAssocRes( task, pqe );
   delete output;
 
+  //
+  // output collected statistics (only in debug mode)
+  //
+  stat_->outputStat();
+  
   //
   // clean up
   //
