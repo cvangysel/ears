@@ -4,12 +4,12 @@
 # ==========================================================================
 
 # Makefile
-# date:     2009-09-09
-# version:  0.9
+# date:     2009-12-04
+# version:  1.0
 
 
 # Lemur installation
-Lemur_dir = /scratch/kbalog/lemur-4.8
+Lemur_dir = PATH_TO_LEMUR
 
 #%.o: %.cpp
 #	$(CXX) $(CXXFLAGS) -o $@ -c $<
