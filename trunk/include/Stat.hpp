@@ -19,7 +19,7 @@
 
 // set 1 for detailed statistics
 // note that it slows down computation
-#define DETAILED_STAT 1
+#define DETAILED_STAT 0
 
 // EARS
 #include "DataTypes.hpp"
