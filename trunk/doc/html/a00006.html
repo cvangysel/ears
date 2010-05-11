@@ -28,25 +28,25 @@
 <h1>ears::Model1 Class Reference</h1><!-- doxytag: class="ears::Model1" --><!-- doxytag: inherits="ears::AssociationModel" -->The "Model 1" association finding model.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;<a class="el" href="a00044.html">Model1.hpp</a>&gt;</code>
+<code>#include &lt;<a class="el" href="a00047.html">Model1.hpp</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for ears::Model1:</div>
 <div class="dynsection">
-<p><center><img src="a00076.png" border="0" usemap="#a00077" alt="Inheritance graph"></center>
-<map name="a00077">
+<p><center><img src="a00083.png" border="0" usemap="#a00084" alt="Inheritance graph"></center>
+<map name="a00084">
 <area shape="rect" href="a00002.html" title="Abstract interface for an association finding model." alt="" coords="5,7,189,33"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for ears::Model1:</div>
 <div class="dynsection">
-<p><center><img src="a00078.png" border="0" usemap="#a00079" alt="Collaboration graph"></center>
-<map name="a00079">
-<area shape="rect" href="a00002.html" title="Abstract interface for an association finding model." alt="" coords="53,103,237,129"><area shape="rect" href="a00004.html" title="Entity representation." alt="" coords="5,7,133,33"><area shape="rect" href="a00009.html" title="Query representation." alt="" coords="157,7,288,33"></map>
+<p><center><img src="a00085.png" border="0" usemap="#a00086" alt="Collaboration graph"></center>
+<map name="a00086">
+<area shape="rect" href="a00002.html" title="Abstract interface for an association finding model." alt="" coords="89,103,273,129"><area shape="rect" href="a00010.html" title="Collecting and calculating statistics." alt="" coords="5,7,93,33"><area shape="rect" href="a00004.html" title="Entity representation." alt="" coords="117,7,245,33"><area shape="rect" href="a00009.html" title="Query representation." alt="" coords="269,7,400,33"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
-<a href="a00080.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
+<a href="a00087.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="594ada37bc5e84ec5c1ba4ef5f00f7d0"></a><!-- doxytag: member="ears::Model1::init" ref="594ada37bc5e84ec5c1ba4ef5f00f7d0" args="()" -->
@@ -66,7 +66,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The "Model 1" association finding model. 
-<p>Definition at line <a class="el" href="a00044.html#l00027">27</a> of file <a class="el" href="a00044.html">Model1.hpp</a>.</p>
+<p>Definition at line <a class="el" href="a00047.html#l00027">27</a> of file <a class="el" href="a00047.html">Model1.hpp</a>.</p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="25d1c09be58e554153fbb1c028fbf0fd"></a><!-- doxytag: member="ears::Model1::setSmoothingAuto" ref="25d1c09be58e554153fbb1c028fbf0fd" args="()" -->
 <div class="memitem">
@@ -90,7 +90,7 @@ Set smoothing parameter based on average candidate representation length.
 <img class="formulaInl" alt="$ n(e) $" src="form_1.png"> is approximated using <img class="formulaInl" alt="$ \sum_{D_e} n(d) \cdot p(d|e) $" src="form_4.png">, where <img class="formulaInl" alt="$ n(d) $" src="form_5.png"> is the length of document <img class="formulaInl" alt="$ d $" src="form_6.png">. 
 <p>Implements <a class="el" href="a00002.html#611a283114e5f7cbb338fbfe45068f58">ears::AssociationModel</a>.</p>
 
-<p>Definition at line <a class="el" href="a00043.html#l00047">47</a> of file <a class="el" href="a00043.html">Model1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="a00046.html#l00047">47</a> of file <a class="el" href="a00046.html">Model1.cpp</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -143,7 +143,7 @@ Here, <img class="formulaInl" alt="$ n(t,e) $" src="form_15.png"> is the number 
  The raw term counts in the entity's representation are calculated using the following equation: <img class="formulaInl" alt="$ n(t,e) = \sum_{D_e} n(t,d) \cdot p(d|e) $" src="form_18.png">, where <img class="formulaInl" alt="$ {D_e} $" src="form_19.png"> is the set of documents associated with the entity and <img class="formulaInl" alt="$ p(d|e) $" src="form_20.png"> expresses the strength of the association between document <img class="formulaInl" alt="$ d $" src="form_6.png"> and entity <img class="formulaInl" alt="$ e $" src="form_2.png">. 
 <p>Implements <a class="el" href="a00002.html#9150f1e15e363fb6aadd12d15281e24a">ears::AssociationModel</a>.</p>
 
-<p>Definition at line <a class="el" href="a00043.html#l00082">82</a> of file <a class="el" href="a00043.html">Model1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="a00046.html#l00082">82</a> of file <a class="el" href="a00046.html">Model1.cpp</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -151,7 +151,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="a00006_dc8a673bd767d95c87a8fc9f5b0532db_cgraph.png" border="0" usemap="#a00006_dc8a673bd767d95c87a8fc9f5b0532db_cgraph_map" alt=""></center>
 <map name="a00006_dc8a673bd767d95c87a8fc9f5b0532db_cgraph_map">
-<area shape="rect" href="a00006.html#982f698ea064184f9fb00d558c3cc687" title="Term counter for an entity (caller is responsible for the deletion of the generated..." alt="" coords="241,5,463,32"><area shape="rect" href="a00004.html#2ccbe3b416fb8995cbff5001a56f5a20" title="Number of documents associated with the entity." alt="" coords="232,56,472,83"><area shape="rect" href="a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID." alt="" coords="256,107,448,133"><area shape="rect" href="a00004.html#7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="247,157,457,184"><area shape="rect" href="a00009.html#4d5937f41e4b5114e0ff309f3de77fd7" title="Query as a term distribution (EARS representation)." alt="" coords="261,208,443,235"><area shape="rect" href="a00009.html#6339a4e8170482354c3fd3b00c9af5e4" title="External query ID." alt="" coords="255,259,449,285"><area shape="rect" href="a00009.html#32feb77641bd68049743ed8d5e391aa3" title="Number of queries." alt="" coords="244,309,460,336"><area shape="rect" href="a00004.html#072ddf4287ac4c0b97a64202847e0284" title="Documents associated with the entity." alt="" coords="521,5,732,32"></map>
+<area shape="rect" href="a00006.html#982f698ea064184f9fb00d558c3cc687" title="Term counter for an entity (caller is responsible for the deletion of the generated..." alt="" coords="241,5,463,32"><area shape="rect" href="a00010.html#052215bb9082765e1bfe00577ed7e415" title="Incrase call count for a selected operation by one." alt="" coords="535,56,719,83"><area shape="rect" href="a00004.html#2ccbe3b416fb8995cbff5001a56f5a20" title="Number of documents associated with the entity." alt="" coords="232,107,472,133"><area shape="rect" href="a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID." alt="" coords="256,157,448,184"><area shape="rect" href="a00004.html#7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="247,208,457,235"><area shape="rect" href="a00009.html#4d5937f41e4b5114e0ff309f3de77fd7" title="Query as a term distribution (EARS representation)." alt="" coords="261,259,443,285"><area shape="rect" href="a00009.html#6339a4e8170482354c3fd3b00c9af5e4" title="External query ID." alt="" coords="255,309,449,336"><area shape="rect" href="a00009.html#32feb77641bd68049743ed8d5e391aa3" title="Number of queries." alt="" coords="244,360,460,387"><area shape="rect" href="a00004.html#072ddf4287ac4c0b97a64202847e0284" title="Documents associated with the entity." alt="" coords="521,5,732,32"></map>
 </div>
 
 </div>
@@ -181,7 +181,7 @@ Term counter for an entity (caller is responsible for the deletion of the genera
   </table>
 </dl>
 
-<p>Definition at line <a class="el" href="a00043.html#l00207">207</a> of file <a class="el" href="a00043.html">Model1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="a00046.html#l00210">210</a> of file <a class="el" href="a00046.html">Model1.cpp</a>.</p>
 
 <p>
 <div class="dynheader">
@@ -189,7 +189,7 @@ Here is the call graph for this function:</div>
 <div class="dynsection">
 <p><center><img src="a00006_982f698ea064184f9fb00d558c3cc687_cgraph.png" border="0" usemap="#a00006_982f698ea064184f9fb00d558c3cc687_cgraph_map" alt=""></center>
 <map name="a00006_982f698ea064184f9fb00d558c3cc687_cgraph_map">
-<area shape="rect" href="a00004.html#072ddf4287ac4c0b97a64202847e0284" title="Documents associated with the entity." alt="" coords="276,5,487,32"></map>
+<area shape="rect" href="a00004.html#072ddf4287ac4c0b97a64202847e0284" title="Documents associated with the entity." alt="" coords="276,5,487,32"><area shape="rect" href="a00010.html#052215bb9082765e1bfe00577ed7e415" title="Incrase call count for a selected operation by one." alt="" coords="289,56,473,83"></map>
 </div>
 
 <p>
@@ -204,9 +204,9 @@ Here is the caller graph for this function:</div>
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="a00044.html">Model1.hpp</a><li><a class="el" href="a00043.html">Model1.cpp</a></ul>
+<li><a class="el" href="a00047.html">Model1.hpp</a><li><a class="el" href="a00046.html">Model1.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:41 2009 for EARS by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:40 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog. All rights reserved.
+ * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -10,8 +10,8 @@
 /*!
  * \file     Model1.cpp
  * \brief    The "Model 1" association finding model
- * \date     2009-12-04
- * \version  1.0
+ * \date     2010-01-18
+ * \version  1.05
  */
 
 // EARS
@@ -32,7 +32,7 @@ void
 ears::Model1::init()
 {
   LOG( logINFO ) << "Initializing Model 1";
-  LOG( logDEBUG ) << "version 1.0 (last mod. 2009-12-04)";
+  LOG( logDEBUG ) << "version 1.05 (last mod. 2010-01-18)";
   
   // smoothing 
   initSmoothing();
@@ -46,7 +46,7 @@ ears::Model1::init()
 void
 ears::Model1::setSmoothingAuto()
 {
-  double sum_ne;
+  double sum_ne = 0.0;
   int entityNum = 0;
   int progress = 0;
   int lastProgress = 0;
@@ -112,6 +112,7 @@ ears::Model1::scoreAll()
       
       const lemur::api::TERMID_T& termID = term_it->first; // t
       pt_cache[termID] = collModel->prob( termID ); // p(t)
+      stat_.incOpCount( "P(t)" );
     }
   }
   
@@ -127,6 +128,7 @@ ears::Model1::scoreAll()
     
     // build entity language model
     int entityDocNum = entities_.entityDocNum( entityID );
+    stat_.incOpCount( "entityDocNum" );
     
     if ( entityDocNum > 0 ) {
       LOG( logDEBUG2 ) << "Creating model based on " 
@@ -153,8 +155,9 @@ ears::Model1::scoreAll()
           const double& ptq = term_it->second; // p(t|q)
           double& pt = pt_cache[termID]; // p(t)                    
           double nte = entityCounter->count( termID ); // n(t,e)
-          double pte; // p(t|\theta_e)
-          
+          stat_.incOpCount( "n(t,e)" );
+
+          double pte; // p(t|\theta_e)                    
           // Jelinek-Mercer smoothing
           // p(t|\theta_e) = (1-\lambda) * (n(t,e)/n(e)) + \lambda * p(t)
           if ( smoothingMethod_ == "jm" ) 
@@ -208,10 +211,20 @@ ears::Model1::entityCounter( const ID_T& entityID )
 {
   lemur::api::IndexedRealVector irv;
   const DISTR_T& pde = entities_.entityDocs( entityID );
+  stat_.incOpCount( "entityDocs" );
 
   // consider all documents associated with the entity
-  for ( DISTR_T::const_iterator it=pde.begin(); it != pde.end(); it++ ) 
+  for ( DISTR_T::const_iterator it = pde.begin(); it != pde.end(); it++ ) {
     irv.PushValue( it->first, it->second );
+    stat_.incOpCount( "termInfoList" );
+    
+    // only if you want detailed statistics -- note that it slows down computation
+    if ( DETAILED_STAT == 1 ) {
+      lemur::api::TermInfoList* termInfoList = index_.termInfoList( it->first );
+      stat_.incOpCount( "n(t,d)", termInfoList->size() );      
+      delete termInfoList;
+    }
+  }
   
   lemur::api::PseudoFBDocs* entityDocs = 
     new lemur::api::PseudoFBDocs( irv, -1, false );

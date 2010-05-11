@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog. All rights reserved.
+ * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -10,8 +10,8 @@
 /*!
  * \file     Model2.cpp
  * \brief    The "Model 2" association finding model
- * \date     2009-09-09
- * \version  0.9
+ * \date     2010-01-18
+ * \version  1.05
  */
 
 // EARS
@@ -36,7 +36,7 @@ void
 ears::Model2::init()
 {
   LOG( logINFO ) << "Initializing Model 2";
-  LOG( logDEBUG ) << "version 1.0 (last mod. 2009-09-09)";
+  LOG( logDEBUG ) << "version 1.05 (last mod. 2010-01-18)";
 
   // smoothing  
   initSmoothing();
@@ -103,6 +103,27 @@ ears::Model2::scoreAll()
     lemur::api::IndexedRealVector pqd_all; // p(q|d) for all documents
     this->scoreCollection( qID, pqd_all );
 
+    // STAT:
+    // we can only estimate the operations involved in creating this ranking
+    int qTermNum = (queries_.query( qID )).size();
+    stat_.incOpCount( "P(t)", qTermNum );
+    stat_.incOpCount( "docInfoList", qTermNum );
+    
+    // only if you want detailed statistics -- note that it slows down computation
+    if ( DETAILED_STAT == 1 ) {
+      const DISTR_T& q = queries_.query( qID ); // q
+      for ( DISTR_T::const_iterator term_it = q.begin();
+           term_it != q.end(); term_it++ ) {
+        lemur::api::DocInfoList* docInfoList = index_.docInfoList( term_it->first ); 
+        docInfoList->startIteration();
+        while ( docInfoList->hasMore() ) {
+          lemur::api::DocInfo* dInfo = docInfoList->nextEntry();                
+          stat_.incOpCount( "n(t,d)" );
+        }
+        delete docInfoList;        
+      }
+    }
+    
     // limiting the number of documents considered
     if ( topDocNum_ > 0 ) 
       pqd_all.resize( topDocNum_ );
@@ -121,6 +142,7 @@ ears::Model2::scoreAll()
       
       // entities associated with docID
       const DISTR_T& pde_doc = entities_.docEntities( docID );
+      stat_.incOpCount( "docEntities" );
       
       if ( pde_doc.size() > 0 ) {
         LOG( logDEBUG2 ) << "    " << pde_doc.size() << " associated entities:";
@@ -188,7 +210,7 @@ ears::Model2::scoreCollection( const int& qID, lemur::api::IndexedRealVector& pq
   
   // score documents
   retMethod->scoreCollection( *qModel, pqd_all );
-  
+    
   // map log(x) values to exp(log(x)) and normalize
   pqd_all.LogToPosterior();
   

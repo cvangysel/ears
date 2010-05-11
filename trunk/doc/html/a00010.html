@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>EARS: AssociationFramework.cpp File Reference</title>
+<title>EARS: ears::Stat Class Reference</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -9,28 +9,133 @@
   <div class="tabs">
     <ul>
       <li><a href="main.html"><span>Main&nbsp;Page</span></a></li>
-      <li><a href="classes.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="classes.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
     </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="classes.html"><span>Alphabetical&nbsp;List</span></a></li>
+      <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><b>ears</b>::<a class="el" href="a00010.html">Stat</a>
   </div>
 </div>
 <div class="contents">
-<h1>AssociationFramework.cpp File Reference</h1>Association finding framework. <a href="#_details">More...</a>
+<h1>ears::Stat Class Reference</h1><!-- doxytag: class="ears::Stat" -->Collecting and calculating statistics.  
+<a href="#_details">More...</a>
+<p>
+<code>#include &lt;<a class="el" href="a00055.html">Stat.hpp</a>&gt;</code>
 <p>
 
 <p>
-<a href="a00031.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
+<a href="a00097.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00010.html#052215bb9082765e1bfe00577ed7e415">incOpCount</a> (const std::string &amp;operation)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Incrase call count for a selected operation by one.  <a href="#052215bb9082765e1bfe00577ed7e415"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00010.html#617b5e5f3523c3c78a4280f8661a99ed">incOpCount</a> (const std::string &amp;operation, const int &amp;count)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Incrase call count for a selected operation by an arbitrary number.  <a href="#617b5e5f3523c3c78a4280f8661a99ed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="872e5a943308dabcc94cf126e73cbfcb"></a><!-- doxytag: member="ears::Stat::outputStat" ref="872e5a943308dabcc94cf126e73cbfcb" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00010.html#872e5a943308dabcc94cf126e73cbfcb">outputStat</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Output statistics. <br></td></tr>
+<tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="74cd2360998398a4262249210e9394ce"></a><!-- doxytag: member="ears::Stat::opCount_" ref="74cd2360998398a4262249210e9394ce" args="" -->
+std::map&lt; std::string, int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00010.html#74cd2360998398a4262249210e9394ce">opCount_</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Counter for keeping the number of times a certain operation was called. <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Association finding framework. 
-<p>
-<dl class="date" compact><dt><b>Date:</b></dt><dd>2009-09-09 </dd></dl>
-<dl class="version" compact><dt><b>Version:</b></dt><dd>0.9 </dd></dl>
-
-<p>Definition in file <a class="el" href="a00031.html">AssociationFramework.cpp</a>.</p>
+Collecting and calculating statistics. 
+<p>Definition at line <a class="el" href="a00055.html#l00031">31</a> of file <a class="el" href="a00055.html">Stat.hpp</a>.</p>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="052215bb9082765e1bfe00577ed7e415"></a><!-- doxytag: member="ears::Stat::incOpCount" ref="052215bb9082765e1bfe00577ed7e415" args="(const std::string &amp;operation)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ears::Stat::incOpCount           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>operation</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:40 2009 for EARS by&nbsp;
+<div class="memdoc">
+
+<p>
+Incrase call count for a selected operation by one. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>operation</em>&nbsp;</td><td>Name or ID of the operation </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="a00054.html#l00024">24</a> of file <a class="el" href="a00054.html">Stat.cpp</a>.</p>
+
+<p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dynsection">
+<p><center><img src="a00010_052215bb9082765e1bfe00577ed7e415_icgraph.png" border="0" usemap="#a00010_052215bb9082765e1bfe00577ed7e415_icgraph_map" alt=""></center>
+<map name="a00010_052215bb9082765e1bfe00577ed7e415_icgraph_map">
+<area shape="rect" href="a00006.html#982f698ea064184f9fb00d558c3cc687" title="Term counter for an entity (caller is responsible for the deletion of the generated..." alt="" coords="237,5,459,32"><area shape="rect" href="a00006.html#dc8a673bd767d95c87a8fc9f5b0532db" title="Implements Model 1 of Balog et. al." alt="" coords="508,31,684,57"><area shape="rect" href="a00007.html#0976c276af16b4b5ccba703ad907d947" title="Implements Model 2 of Balog. et. al." alt="" coords="260,107,436,133"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="617b5e5f3523c3c78a4280f8661a99ed"></a><!-- doxytag: member="ears::Stat::incOpCount" ref="617b5e5f3523c3c78a4280f8661a99ed" args="(const std::string &amp;operation, const int &amp;count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ears::Stat::incOpCount           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>operation</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&nbsp;</td>
+          <td class="paramname"> <em>count</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Incrase call count for a selected operation by an arbitrary number. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>operation</em>&nbsp;</td><td>Name or ID of the operation </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>count</em>&nbsp;</td><td>How many times it has been called </td></tr>
+  </table>
+</dl>
+
+<p>Definition at line <a class="el" href="a00054.html#l00033">33</a> of file <a class="el" href="a00054.html">Stat.cpp</a>.</p>
+
+</div>
+</div><p>
+<hr>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="a00055.html">Stat.hpp</a><li><a class="el" href="a00054.html">Stat.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:42 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

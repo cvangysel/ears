@@ -28,28 +28,28 @@
 <h1>ears::AssociationModel Class Reference</h1><!-- doxytag: class="ears::AssociationModel" -->Abstract interface for an association finding model.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;<a class="el" href="a00035.html">AssociationModel.hpp</a>&gt;</code>
+<code>#include &lt;<a class="el" href="a00038.html">AssociationModel.hpp</a>&gt;</code>
 <p>
 <div class="dynheader">
 Inheritance diagram for ears::AssociationModel:</div>
 <div class="dynsection">
-<p><center><img src="a00068.png" border="0" usemap="#a00069" alt="Inheritance graph"></center>
-<map name="a00069">
+<p><center><img src="a00075.png" border="0" usemap="#a00076" alt="Inheritance graph"></center>
+<map name="a00076">
 <area shape="rect" href="a00006.html" title="The &quot;Model 1&quot; association finding model." alt="" coords="5,84,117,111"><area shape="rect" href="a00007.html" title="The &quot;Model 2&quot; association finding model." alt="" coords="141,84,253,111"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 <div class="dynheader">
 Collaboration diagram for ears::AssociationModel:</div>
 <div class="dynsection">
-<p><center><img src="a00070.png" border="0" usemap="#a00071" alt="Collaboration graph"></center>
-<map name="a00071">
-<area shape="rect" href="a00004.html" title="Entity representation." alt="" coords="5,7,133,33"><area shape="rect" href="a00009.html" title="Query representation." alt="" coords="157,7,288,33"></map>
+<p><center><img src="a00077.png" border="0" usemap="#a00078" alt="Collaboration graph"></center>
+<map name="a00078">
+<area shape="rect" href="a00010.html" title="Collecting and calculating statistics." alt="" coords="5,7,93,33"><area shape="rect" href="a00004.html" title="Entity representation." alt="" coords="117,7,245,33"><area shape="rect" href="a00009.html" title="Query representation." alt="" coords="269,7,400,33"></map>
 <center><font size="2">[<a target="top" href="graph_legend.html">legend</a>]</font></center></div>
 
 <p>
-<a href="a00072.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
+<a href="a00079.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#6ec449f608305aa872d789714de3f065">AssociationModel</a> (const lemur::api::Index &amp;index, const <a class="el" href="a00004.html">EntityRep</a> &amp;entities, const <a class="el" href="a00009.html">QueryRep</a> &amp;queries)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#554b3e0e77c67a43e4cec3639965545d">AssociationModel</a> (const lemur::api::Index &amp;index, const <a class="el" href="a00004.html">EntityRep</a> &amp;entities, const <a class="el" href="a00009.html">QueryRep</a> &amp;queries, <a class="el" href="a00010.html">Stat</a> &amp;stat)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="792aaaa6abe5e4572cac37e5819ba042"></a><!-- doxytag: member="ears::AssociationModel::init" ref="792aaaa6abe5e4572cac37e5819ba042" args="()=0" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#792aaaa6abe5e4572cac37e5819ba042">init</a> ()=0</td></tr>
@@ -79,6 +79,10 @@ const <a class="el" href="a00004.html">EntityRep</a> &amp;&nbsp;</td><td class="
 const <a class="el" href="a00009.html">QueryRep</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#5300979ba681380612833199bd430b59">queries_</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Query representation. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="bd228dea4383bd4d978b10652dcb90c0"></a><!-- doxytag: member="ears::AssociationModel::stat_" ref="bd228dea4383bd4d978b10652dcb90c0" args="" -->
+<a class="el" href="a00010.html">Stat</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#bd228dea4383bd4d978b10652dcb90c0">stat_</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="a00010.html" title="Collecting and calculating statistics.">Stat</a> collector. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="49da85a1359cbf8984a6f3c9b0017226"></a><!-- doxytag: member="ears::AssociationModel::init_" ref="49da85a1359cbf8984a6f3c9b0017226" args="" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00002.html#49da85a1359cbf8984a6f3c9b0017226">init_</a></td></tr>
 
@@ -94,9 +98,9 @@ double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a0
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Abstract interface for an association finding model. 
-<p>Definition at line <a class="el" href="a00035.html#l00032">32</a> of file <a class="el" href="a00035.html">AssociationModel.hpp</a>.</p>
+<p>Definition at line <a class="el" href="a00038.html#l00033">33</a> of file <a class="el" href="a00038.html">AssociationModel.hpp</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="6ec449f608305aa872d789714de3f065"></a><!-- doxytag: member="ears::AssociationModel::AssociationModel" ref="6ec449f608305aa872d789714de3f065" args="(const lemur::api::Index &amp;index, const EntityRep &amp;entities, const QueryRep &amp;queries)" -->
+<a class="anchor" name="554b3e0e77c67a43e4cec3639965545d"></a><!-- doxytag: member="ears::AssociationModel::AssociationModel" ref="554b3e0e77c67a43e4cec3639965545d" args="(const lemur::api::Index &amp;index, const EntityRep &amp;entities, const QueryRep &amp;queries, Stat &amp;stat)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -116,7 +120,13 @@ Abstract interface for an association finding model.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="a00009.html">QueryRep</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>queries</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>queries</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00010.html">Stat</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>stat</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -136,7 +146,7 @@ Abstract interface for an association finding model.
   </table>
 </dl>
 
-<p>Definition at line <a class="el" href="a00035.html#l00041">41</a> of file <a class="el" href="a00035.html">AssociationModel.hpp</a>.</p>
+<p>Definition at line <a class="el" href="a00038.html#l00042">42</a> of file <a class="el" href="a00038.html">AssociationModel.hpp</a>.</p>
 
 </div>
 </div><p>
@@ -174,9 +184,9 @@ Here is the caller graph for this function:</div>
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="a00035.html">AssociationModel.hpp</a><li><a class="el" href="a00034.html">AssociationModel.cpp</a></ul>
+<li><a class="el" href="a00038.html">AssociationModel.hpp</a><li><a class="el" href="a00037.html">AssociationModel.cpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:41 2009 for EARS by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:39 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

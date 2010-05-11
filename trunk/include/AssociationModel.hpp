@@ -1,5 +1,5 @@
 /*==========================================================================
- * Copyright (c) 2009, Krisztian Balog. All rights reserved.
+ * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.
  *
  * Use of the Entity and Association Retrieval System (EARS) 
  * is subject to the terms of the software license set forth 
@@ -10,8 +10,8 @@
 /*!
  * \file     AssociationModel.hpp
  * \brief    Abstract interface for an association finding model
- * \date     2009-09-09
- * \version  0.9
+ * \date     2010-01-18
+ * \version  1.05
  */
 
 #ifndef _ASSOCIATIONMODEL_HPP
@@ -21,6 +21,7 @@
 #include "DataTypes.hpp"
 #include "EntityRep.hpp"
 #include "QueryRep.hpp"
+#include "Stat.hpp"
 
 // Lemur
 #include "Index.hpp"
@@ -40,9 +41,10 @@ namespace ears {
      */
     AssociationModel( const lemur::api::Index& index,
                       const EntityRep& entities,
-                      const QueryRep& queries
-                     ) : index_(index), entities_(entities), queries_(queries), 
-                         init_(false) {}
+                      const QueryRep& queries,
+                      Stat& stat
+                     ) : index_(index), entities_(entities), queries_(queries),
+                         stat_(stat), init_(false) {}
     
     /// 
     virtual ~AssociationModel() {}
@@ -72,6 +74,9 @@ namespace ears {
     
     /// Query representation
     const QueryRep& queries_;
+    
+    /// Stat collector
+    Stat& stat_;
     
     /// Whether initialization has completed
     bool init_;

@@ -1,8 +1,9 @@
 <area shape="rect" href="$a00002.html#792aaaa6abe5e4572cac37e5819ba042" title="Initialization. Must be called before scoreAll()." alt="" coords="336,107,552,133">
 <area shape="rect" href="$a00004.html#6b0233908ef09751b51710c511f5b121" title="Load entities and document&#45;entity associations." alt="" coords="635,5,891,32">
-<area shape="rect" href="$a00009.html#13cc8cef31fc849edef92b35429fa11a" title="Load queries." alt="" coords="331,259,557,285">
+<area shape="rect" href="$a00009.html#13cc8cef31fc849edef92b35429fa11a" title="Load queries." alt="" coords="649,411,876,437">
 <area shape="rect" href="$a00008.html#5caf607f038671d49f0fcf75473fe966" title="Output topic&#45;entity associations." alt="" coords="307,208,581,235">
-<area shape="rect" href="$a00002.html#9150f1e15e363fb6aadd12d15281e24a" title="Run model to determine p(q|e) for all queries and entities." alt="" coords="320,309,568,336">
+<area shape="rect" href="$a00010.html#872e5a943308dabcc94cf126e73cbfcb" title="Output statistics." alt="" coords="357,309,531,336">
+<area shape="rect" href="$a00002.html#9150f1e15e363fb6aadd12d15281e24a" title="Run model to determine p(q|e) for all queries and entities." alt="" coords="320,360,568,387">
 <area shape="rect" href="$a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID." alt="" coords="979,259,1171,285">
 <area shape="rect" href="$a00004.html#77f3e1dccfc70b7719ce1e45c49a2cf7" title="Get external entityID from entityAlias." alt="" coords="945,5,1204,32">
 <area shape="rect" href="$a00004.html#7ae4326500a0f78329b3e137e067440e" title="Number of entities." alt="" coords="969,56,1180,83">

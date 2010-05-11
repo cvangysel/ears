@@ -1,0 +1,58 @@
+Expert finding and profiling on the UvT Expert Collection (v1.4) using EARS
+
+Step 1:
+Download the UvT data collection from http://ilk.uvt.nl/uvt-expert-collection/
+
+Step 2:
+Unzip uvt-expert-collection-v1.4.tgz under examples/uvt/webwijs-1.4
+(Or change the path in the config files accordingly)
+
+Step 3:
+Index the collection: {Lemur_dir}/bin/BuildIndex conf/BuildIndex.conf
+(Config file is provided only for Lemur, building an Indri index goes similarly.)
+
+Step 4:
+Unzip examples/uvt/data.zip. This contains associations, topics and qrels, 
+inferred from the original UvT collection. Topics contain only those topics 
+where both English and Dutch translations are available.
+
+Step 5:
+Run expert finding, e.g.: ears ef examples/uvt/conf/ears_model1.EN.conf
+or expert profiling, e.g.: ears ep examples/uvt/conf/ears_model2.NL.conf
+
+
+Results:
+Generated using trec_eval 8.1 [http://trec.nist.gov/trec_eval/]
+E.g., trec_eval examples/uvt/data/qrels/ef.qrels examples/uvt/output/model1.EN.out
+
+Expert finding (986 topics in total):
+-----------------------------------------------------
+\beta | Lang | num_q | -- Model 1 -- | -- Model 2 -- 
+      |      |       |  MAP     MRR  |  MAP    MRR   
+-----------------------------------------------------
+auto  |  EN  |  968  | 0.2008 0.3551 | 0.1994 0.3564 
+      |  NL  |  937  | 0.1730 0.3382 | 0.1737 0.3374 
+-----------------------------------------------------
+* Manual smoothing parameter settings do not perform
+  significantly better than the automatic configuration.
+
+
+Expert profiling (743 experts in total):
+-----------------------------------------------------
+\beta | Lang | num_q | -- Model 1 -- | -- Model 2 -- 
+      |      |       |  MAP     MRR  |  MAP    MRR   
+-----------------------------------------------------
+auto  |  EN  |  743  | 0.1300 0.3070 | 0.1380 0.3136 
+      |  NL  |  743  | 0.0987 0.2686 | 0.1206 0.3084 
+-----------------------------------------------------
+   1  |  EN  |  743  | 0.1432 0.3280 | 
+      |  NL  |  743  | 0.1053 0.2745 | 
+-----------------------------------------------------
+  20  |  EN  |  743  |               | 0.1552 0.3498
+-----------------------------------------------------
+* All improvements are significant at the 0.05 level.
+  No significant improvements for Model 2, NL.
+
+--
+EARS -- Entity and Association Retrieval System
+Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.

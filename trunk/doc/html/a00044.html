@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>EARS: Model1.hpp Source File</title>
+<title>EARS: EntityRep.hpp Source File</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -13,7 +13,7 @@
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
-<h1>Model1.hpp</h1><a href="a00022.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
+<h1>EntityRep.hpp</h1><a href="a00020.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
 <a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009, Krisztian Balog. All rights reserved.</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> * Use of the Entity and Association Retrieval System (EARS) </span>
@@ -22,44 +22,84 @@
 <a name="l00007"></a>00007 <span class="comment"> *==========================================================================</span>
 <a name="l00008"></a>00008 <span class="comment"> */</span>
 <a name="l00009"></a>00009 
-<a name="l00017"></a>00017 <span class="preprocessor">#ifndef _MODEL1_HPP</span>
-<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define _MODEL1_HPP</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#ifndef _ENTITYREP_HPP</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define _ENTITYREP_HPP</span>
 <a name="l00019"></a>00019 <span class="preprocessor"></span>
 <a name="l00020"></a>00020 <span class="comment">// EARS</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include "<a class="code" href="a00013.html" title="Abstract interface for an association finding model.">AssociationModel.hpp</a>"</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include "<a class="code" href="a00016.html" title="DocUnigramCounter able to deal with doubles.">DoubleDocUnigramCounter.hpp</a>"</span>
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="keyword">namespace </span>ears {
-<a name="l00025"></a>00025   
-<a name="l00027"></a><a class="code" href="a00006.html">00027</a>   <span class="keyword">class </span><a class="code" href="a00006.html" title="The &amp;quot;Model 1&amp;quot; association finding model.">Model1</a> : <span class="keyword">public</span> <a class="code" href="a00002.html" title="Abstract interface for an association finding model.">AssociationModel</a> 
-<a name="l00028"></a>00028   {
-<a name="l00029"></a>00029   <span class="keyword">public</span>:
-<a name="l00031"></a>00031     <a class="code" href="a00006.html" title="The &amp;quot;Model 1&amp;quot; association finding model.">Model1</a>( <span class="keyword">const</span> lemur::api::Index&amp; index,
-<a name="l00032"></a>00032             <span class="keyword">const</span> <a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>&amp; entities,
-<a name="l00033"></a>00033             <span class="keyword">const</span> <a class="code" href="a00009.html" title="Query representation.">QueryRep</a>&amp; queries
-<a name="l00034"></a>00034           ) : <a class="code" href="a00002.html#6ec449f608305aa872d789714de3f065">AssociationModel</a>( index, entities, queries ) {}
-<a name="l00035"></a>00035     
-<a name="l00037"></a>00037     ~<a class="code" href="a00006.html" title="The &amp;quot;Model 1&amp;quot; association finding model.">Model1</a>() {}
-<a name="l00038"></a>00038 
-<a name="l00040"></a>00040     <span class="keywordtype">void</span> <a class="code" href="a00006.html#594ada37bc5e84ec5c1ba4ef5f00f7d0" title="Initialization. Must be called before scoreAll().">init</a>();
-<a name="l00041"></a>00041     
+<a name="l00021"></a>00021 <span class="preprocessor">#include "<a class="code" href="a00015.html" title="EARS data types.">DataTypes.hpp</a>"</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="comment">// Lemur</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include "Index.hpp"</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include "IndexedReal.hpp"</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">namespace </span>ears {
+<a name="l00028"></a>00028   
+<a name="l00030"></a><a class="code" href="a00004.html">00030</a>   <span class="keyword">class </span><a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>
+<a name="l00031"></a>00031   {
+<a name="l00032"></a>00032   <span class="keyword">public</span>:    
+<a name="l00034"></a>00034 
+<a name="l00042"></a><a class="code" href="a00004.html#bd5ac1b6e0fc0b42a48cc3e878adba2c">00042</a>     <span class="keyword">enum</span> <a class="code" href="a00004.html#bd5ac1b6e0fc0b42a48cc3e878adba2c" title="Types of storing document-entity associations.">TAssocIndexing</a> {aiENTITY, aiDOCUMENT};
 <a name="l00043"></a>00043 
-<a name="l00051"></a>00051     <span class="keywordtype">void</span> <a class="code" href="a00006.html#25d1c09be58e554153fbb1c028fbf0fd" title="Set smoothing parameter based on average candidate representation length.">setSmoothingAuto</a>();
-<a name="l00052"></a>00052 
+<a name="l00045"></a>00045 
+<a name="l00048"></a><a class="code" href="a00004.html#c9d7b02560605acf896543278e30b898">00048</a>     <a class="code" href="a00004.html#c9d7b02560605acf896543278e30b898">EntityRep</a>( <span class="keyword">const</span> <a class="code" href="a00004.html#bd5ac1b6e0fc0b42a48cc3e878adba2c" title="Types of storing document-entity associations.">TAssocIndexing</a>&amp; assocIndex ) : <a class="code" href="a00004.html#b8e7cfa35fc31ca00c76438a0381e1a1" title="Indexing of document-entity associations for internal storage.">assocIndex_</a>( assocIndex ) {};
+<a name="l00049"></a>00049     
+<a name="l00051"></a>00051     ~<a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>() {};
+<a name="l00052"></a>00052     
 <a name="l00054"></a>00054 
-<a name="l00090"></a>00090     ASSOCRES_T <a class="code" href="a00006.html#dc8a673bd767d95c87a8fc9f5b0532db" title="Implements Model 1 of Balog et. al.">scoreAll</a>();  
-<a name="l00091"></a>00091         
-<a name="l00092"></a>00092   <span class="keyword">private</span>:
-<a name="l00093"></a>00093         
-<a name="l00096"></a>00096 
-<a name="l00099"></a>00099     <a class="code" href="a00003.html" title="DocUnigramCounter for doubles (to use with WeightedIDSets). Similar to RelDocUnigram...">DoubleDocUnigramCounter</a>* <a class="code" href="a00006.html#982f698ea064184f9fb00d558c3cc687" title="Term counter for an entity (caller is responsible for the deletion of the generated...">entityCounter</a>( <span class="keyword">const</span> ID_T&amp; entityID );
-<a name="l00100"></a>00100     
-<a name="l00101"></a>00101   };
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 <span class="preprocessor">#endif </span><span class="comment">/* _MODEL1_HPP */</span>
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00059"></a>00059     <span class="keywordtype">void</span> <a class="code" href="a00004.html#6b0233908ef09751b51710c511f5b121" title="Load entities and document-entity associations.">loadAssociations</a>( <span class="keyword">const</span> lemur::api::Index&amp; index );
+<a name="l00060"></a>00060 
+<a name="l00062"></a>00062 
+<a name="l00065"></a>00065     <span class="keyword">const</span> DISTR_T&amp; <a class="code" href="a00004.html#072ddf4287ac4c0b97a64202847e0284" title="Documents associated with the entity.">entityDocs</a>( <span class="keyword">const</span> ID_T&amp; <a class="code" href="a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID.">entityID</a> ) <span class="keyword">const</span>;
+<a name="l00066"></a>00066     
+<a name="l00068"></a>00068 
+<a name="l00071"></a>00071     <span class="keyword">const</span> DISTR_T&amp; <a class="code" href="a00004.html#bc194e21db0a234b003ae23d756f2441" title="Entities associated with the document.">docEntities</a>( <span class="keyword">const</span> ID_T&amp; docID ) <span class="keyword">const</span>;
+<a name="l00073"></a>00073 
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="a00004.html#7ae4326500a0f78329b3e137e067440e" title="Number of entities.">entityNum</a>() <span class="keyword">const</span>;
+<a name="l00078"></a>00078 
+<a name="l00080"></a>00080 
+<a name="l00083"></a>00083     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="a00004.html#2ccbe3b416fb8995cbff5001a56f5a20" title="Number of documents associated with the entity.">entityDocNum</a>( <span class="keyword">const</span> ID_T&amp; <a class="code" href="a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID.">entityID</a> ) <span class="keyword">const</span>;
+<a name="l00084"></a>00084     
+<a name="l00086"></a>00086 
+<a name="l00089"></a>00089     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="a00004.html#bd8bc12d6dbb54349f11188e985fbf09" title="Number of entities associated with the document.">docEntityNum</a>( <span class="keyword">const</span> lemur::api::DOCID_T&amp; docID ) <span class="keyword">const</span>;
+<a name="l00091"></a>00091             
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00098"></a>00098     <span class="keyword">const</span> ID_T <a class="code" href="a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID.">entityID</a>( <span class="keyword">const</span> EXID_T&amp; extEntityID ) <span class="keyword">const</span>;
+<a name="l00099"></a>00099     
+<a name="l00101"></a>00101 
+<a name="l00104"></a>00104     <span class="keyword">const</span> EXID_T <a class="code" href="a00004.html#92d92b4659a3a115bbc45c121a4888db" title="Convert external entityID to internal entityID.">entityID</a>( <span class="keyword">const</span> ID_T&amp; intEntityID ) <span class="keyword">const</span>;
+<a name="l00105"></a>00105     
+<a name="l00107"></a>00107 
+<a name="l00110"></a>00110     <span class="keyword">const</span> EXID_T <a class="code" href="a00004.html#77f3e1dccfc70b7719ce1e45c49a2cf7" title="Get external entityID from entityAlias.">entityIDfromAlias</a>( <span class="keyword">const</span> EXID_T&amp; entityAlias ) <span class="keyword">const</span>;    
+<a name="l00112"></a>00112     
+<a name="l00113"></a>00113   <span class="keyword">private</span>:
+<a name="l00114"></a>00114     
+<a name="l00116"></a><a class="code" href="a00004.html#98233a41ef7a039dcff925e94b73c2a1">00116</a>     std::map&lt; EXID_T, ID_T &gt; <a class="code" href="a00004.html#98233a41ef7a039dcff925e94b73c2a1" title="Mapping from external to internal entity IDs.">intEntityID_</a>;
+<a name="l00117"></a>00117     
+<a name="l00119"></a><a class="code" href="a00004.html#3aac89b5abe71f2fb0b4f666065b223c">00119</a>     std::vector&lt; EXID_T &gt; <a class="code" href="a00004.html#3aac89b5abe71f2fb0b4f666065b223c" title="Mapping from internal to external entity IDs.">extEntityID_</a>;
+<a name="l00120"></a>00120     
+<a name="l00122"></a><a class="code" href="a00004.html#e1833065f4de2717a832d6a8b8fc0847">00122</a>     std::map&lt; EXID_T, EXID_T &gt; <a class="code" href="a00004.html#e1833065f4de2717a832d6a8b8fc0847" title="Mapping from entity alias to external entity ID.">aliasEntityID_</a>;
+<a name="l00123"></a>00123 
+<a name="l00125"></a><a class="code" href="a00004.html#b8e7cfa35fc31ca00c76438a0381e1a1">00125</a>     <span class="keyword">const</span> <a class="code" href="a00004.html#bd5ac1b6e0fc0b42a48cc3e878adba2c" title="Types of storing document-entity associations.">TAssocIndexing</a> <a class="code" href="a00004.html#b8e7cfa35fc31ca00c76438a0381e1a1" title="Indexing of document-entity associations for internal storage.">assocIndex_</a>;
+<a name="l00126"></a>00126     
+<a name="l00128"></a>00128 
+<a name="l00134"></a><a class="code" href="a00004.html#1c0cb656995cf917101e213b30ccf987">00134</a>     std::vector&lt; DISTR_T &gt; <a class="code" href="a00004.html#1c0cb656995cf917101e213b30ccf987" title="Document-entity associations.">pde_</a>;
+<a name="l00135"></a>00135     
+<a name="l00137"></a><a class="code" href="a00004.html#d08c474be0e42dd040865ed68f447d15">00137</a>     std::vector&lt; int &gt; <a class="code" href="a00004.html#d08c474be0e42dd040865ed68f447d15" title="Number of documents associated with an entity.">nd_</a>;
+<a name="l00138"></a>00138     
+<a name="l00140"></a><a class="code" href="a00004.html#12e4954b7d275cf018b4a70fc0b6e624">00140</a>     std::vector&lt; int &gt; <a class="code" href="a00004.html#12e4954b7d275cf018b4a70fc0b6e624" title="Number of entities associated with a document.">ne_</a>;
+<a name="l00141"></a>00141     
+<a name="l00142"></a>00142   };    
+<a name="l00143"></a>00143 }
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="preprocessor">#endif </span><span class="comment">/* _ENTITYREP_HPP */</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:40 2009 for EARS by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:38 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

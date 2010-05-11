@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>EARS: DoubleDocUnigramCounter.cpp Source File</title>
+<title>EARS: AssociationModel.cpp Source File</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -13,8 +13,8 @@
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
-<h1>DoubleDocUnigramCounter.cpp</h1><a href="a00015.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009, Wouter Weerkamp and Krisztian Balog. All rights reserved.</span>
+<h1>AssociationModel.cpp</h1><a href="a00013.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009, Krisztian Balog. All rights reserved.</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> * Use of the Entity and Association Retrieval System (EARS) </span>
 <a name="l00005"></a>00005 <span class="comment"> * is subject to the terms of the software license set forth </span>
@@ -23,41 +23,57 @@
 <a name="l00008"></a>00008 <span class="comment"> */</span>
 <a name="l00009"></a>00009 
 <a name="l00017"></a>00017 <span class="comment">// EARS</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include "<a class="code" href="a00016.html" title="DocUnigramCounter able to deal with doubles.">DoubleDocUnigramCounter.hpp</a>"</span>
-<a name="l00019"></a>00019 
+<a name="l00018"></a>00018 <span class="preprocessor">#include "<a class="code" href="a00014.html" title="Abstract interface for an association finding model.">AssociationModel.hpp</a>"</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include "<a class="code" href="a00021.html" title="Event logger.">Logger.hpp</a>"</span>
 <a name="l00020"></a>00020 
-<a name="l00022"></a>00022 ears::DoubleDocUnigramCounter::DoubleDocUnigramCounter(
-<a name="l00023"></a>00023           <span class="keyword">const</span> lemur::utility::WeightedIDSet &amp;docSet, 
-<a name="l00024"></a>00024           <span class="keyword">const</span> lemur::api::Index &amp;homeIndex )
-<a name="l00025"></a>00025         : ind(homeIndex), 
-<a name="l00026"></a>00026           lemur::utility::ArrayCounter&lt;double&gt;(homeIndex.termCountUnique()+1 )
+<a name="l00021"></a>00021 <span class="comment">// Lemur</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include "Param.hpp"</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 
+<a name="l00026"></a><a class="code" href="a00002.html#34e26154c45608675f94d3b2d8d72875">00026</a> <span class="keywordtype">void</span> <a class="code" href="a00002.html#34e26154c45608675f94d3b2d8d72875" title="Init smoothing settings.">ears::AssociationModel::initSmoothing</a>()
 <a name="l00027"></a>00027 {
-<a name="l00028"></a>00028   docSet.startIteration();
-<a name="l00029"></a>00029   <span class="keywordflow">while</span> ( docSet.hasMore() ) {
-<a name="l00030"></a>00030     <span class="keywordtype">int</span> docID;
-<a name="l00031"></a>00031     <span class="keywordtype">double</span> wt;
-<a name="l00032"></a>00032     docSet.nextIDInfo( docID, wt );
-<a name="l00033"></a>00033     countDocUnigram( docID, wt );
-<a name="l00034"></a>00034   }
-<a name="l00035"></a>00035 }
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 
-<a name="l00040"></a>00040 <span class="keywordtype">void</span> 
-<a name="l00041"></a>00041 ears::DoubleDocUnigramCounter::countDocUnigram( lemur::api::DOCID_T docID, 
-<a name="l00042"></a>00042                                                 <span class="keywordtype">double</span> weight )
-<a name="l00043"></a>00043 {
-<a name="l00044"></a>00044   lemur::api::TermInfoList *tList = ind.termInfoList( docID );
-<a name="l00045"></a>00045   <span class="keyword">const</span> lemur::api::TermInfo *info;
-<a name="l00046"></a>00046   tList-&gt;startIteration();
-<a name="l00047"></a>00047   <span class="keywordflow">while</span> ( tList-&gt;hasMore() ) {
-<a name="l00048"></a>00048     info = tList-&gt;nextEntry();
-<a name="l00049"></a>00049     incCount( info-&gt;termID(), weight*info-&gt;count() );
-<a name="l00050"></a>00050   }
-<a name="l00051"></a>00051   <span class="keyword">delete</span> tList;
-<a name="l00052"></a>00052 }
+<a name="l00028"></a>00028   std::string smethod;
+<a name="l00029"></a>00029   std::string sparam;
+<a name="l00030"></a>00030   <span class="keywordtype">bool</span> autoSmoothing = <span class="keyword">false</span>;
+<a name="l00031"></a>00031   
+<a name="l00032"></a>00032   <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> = lemur::api::ParamGetString( <span class="stringliteral">"smoothingMethod"</span> );
+<a name="l00033"></a>00033   <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a> = lemur::api::ParamGetDouble( <span class="stringliteral">"smoothingParam"</span>, 0.0 );
+<a name="l00034"></a>00034   
+<a name="l00035"></a>00035   <span class="comment">// default is Dirichlet smoothing</span>
+<a name="l00036"></a>00036   <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> == <span class="stringliteral">""</span> ) 
+<a name="l00037"></a>00037      <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> = <span class="stringliteral">"dirichlet"</span>;
+<a name="l00038"></a>00038   
+<a name="l00039"></a>00039   <span class="comment">// setting smoothing parameter automatically</span>
+<a name="l00040"></a>00040   <span class="comment">// (if auto smoothing then it's always Dirichlet smoothing)</span>
+<a name="l00041"></a>00041   <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a> == 0.0 ) {
+<a name="l00042"></a>00042     LOG( logINFO ) &lt;&lt; <span class="stringliteral">"Estimating smoothing parameter (automatically)"</span>;
+<a name="l00043"></a>00043     autoSmoothing = <span class="keyword">true</span>;
+<a name="l00044"></a>00044     <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> = <span class="stringliteral">"dirichlet"</span>;
+<a name="l00045"></a>00045     this-&gt;<a class="code" href="a00002.html#611a283114e5f7cbb338fbfe45068f58" title="Set smoothing parameter automatically.">setSmoothingAuto</a>();
+<a name="l00046"></a>00046   }
+<a name="l00047"></a>00047   
+<a name="l00048"></a>00048   <span class="comment">// display smoothing method and parameter  </span>
+<a name="l00049"></a>00049   <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> == <span class="stringliteral">"dirichlet"</span> ) { <span class="comment">// Dirichlet</span>
+<a name="l00050"></a>00050     smethod = <span class="stringliteral">"Dirichlet"</span>;
+<a name="l00051"></a>00051     sparam = <span class="stringliteral">"beta"</span>;
+<a name="l00052"></a>00052   }
+<a name="l00053"></a>00053   <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> == <span class="stringliteral">"jm"</span> ) { <span class="comment">// Jelinek-Mercer</span>
+<a name="l00054"></a>00054     smethod = <span class="stringliteral">"Jelinek-Mercer"</span>;
+<a name="l00055"></a>00055     sparam = <span class="stringliteral">"lambda"</span>;
+<a name="l00056"></a>00056   }  
+<a name="l00057"></a>00057   <span class="keywordflow">else</span> {
+<a name="l00058"></a>00058     LOG( logERROR ) &lt;&lt; <span class="stringliteral">"Unknown smoothing method '"</span> &lt;&lt; <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a> &lt;&lt; <span class="stringliteral">"'"</span>;
+<a name="l00059"></a>00059     exit( EXIT_FAILURE );
+<a name="l00060"></a>00060   }
+<a name="l00061"></a>00061   
+<a name="l00062"></a>00062   <span class="keywordflow">if</span> ( autoSmoothing )
+<a name="l00063"></a>00063     sparam += <span class="stringliteral">", auto"</span>;
+<a name="l00064"></a>00064   
+<a name="l00065"></a>00065   LOG( logDEBUG ) &lt;&lt; <span class="stringliteral">"Smoothing method: "</span> &lt;&lt; smethod; 
+<a name="l00066"></a>00066   LOG( logDEBUG ) &lt;&lt; <span class="stringliteral">"Smoothing parameter ("</span> &lt;&lt; sparam &lt;&lt; <span class="stringliteral">"): "</span> &lt;&lt; <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a>;
+<a name="l00067"></a>00067 }
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:40 2009 for EARS by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:38 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

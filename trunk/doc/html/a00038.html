@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>EARS: DoubleDocUnigramCounter.hpp Source File</title>
+<title>EARS: AssociationModel.hpp Source File</title>
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 <link href="tabs.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -13,8 +13,8 @@
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
-<h1>DoubleDocUnigramCounter.hpp</h1><a href="a00016.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009, Wouter Weerkamp and Krisztian Balog. All rights reserved.</span>
+<h1>AssociationModel.hpp</h1><a href="a00014.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*==========================================================================</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2009-2010, Krisztian Balog. All rights reserved.</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> * Use of the Entity and Association Retrieval System (EARS) </span>
 <a name="l00005"></a>00005 <span class="comment"> * is subject to the terms of the software license set forth </span>
@@ -22,39 +22,65 @@
 <a name="l00007"></a>00007 <span class="comment"> *==========================================================================</span>
 <a name="l00008"></a>00008 <span class="comment"> */</span>
 <a name="l00009"></a>00009 
-<a name="l00018"></a>00018 <span class="preprocessor">#ifndef _DOUBLEDOCUNIGRAMCOUNTER_HPP</span>
-<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define _DOUBLEDOCUNIGRAMCOUNTER_HPP</span>
-<a name="l00020"></a>00020 <span class="preprocessor"></span>
-<a name="l00021"></a>00021 <span class="comment">// Lemur</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include "common_headers.hpp"</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include "WeightedIDSet.hpp"</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include "Counter.hpp"</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include "Index.hpp"</span>
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027 <span class="keyword">namespace </span>ears {
+<a name="l00017"></a>00017 <span class="preprocessor">#ifndef _ASSOCIATIONMODEL_HPP</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define _ASSOCIATIONMODEL_HPP</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span>
+<a name="l00020"></a>00020 <span class="comment">// EARS</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include "<a class="code" href="a00015.html" title="EARS data types.">DataTypes.hpp</a>"</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include "<a class="code" href="a00020.html" title="Entity representation.">EntityRep.hpp</a>"</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include "<a class="code" href="a00029.html" title="Query representation.">QueryRep.hpp</a>"</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include "<a class="code" href="a00031.html" title="Collecting and calculating statistics.">Stat.hpp</a>"</span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="comment">// Lemur</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include "Index.hpp"</span>
 <a name="l00028"></a>00028 
-<a name="l00031"></a><a class="code" href="a00003.html">00031</a>   <span class="keyword">class </span><a class="code" href="a00003.html" title="DocUnigramCounter for doubles (to use with WeightedIDSets). Similar to RelDocUnigram...">DoubleDocUnigramCounter</a> : <span class="keyword">public</span> lemur::utility::ArrayCounter &lt;double&gt;
-<a name="l00032"></a>00032   {
-<a name="l00033"></a>00033   <span class="keyword">public</span>:
-<a name="l00035"></a>00035     <a class="code" href="a00003.html" title="DocUnigramCounter for doubles (to use with WeightedIDSets). Similar to RelDocUnigram...">DoubleDocUnigramCounter</a>( <span class="keyword">const</span> lemur::utility::WeightedIDSet &amp;docSet, 
-<a name="l00036"></a>00036                              <span class="keyword">const</span> lemur::api::Index &amp;homeIndex );
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">namespace </span>ears {
+<a name="l00031"></a>00031   
+<a name="l00033"></a><a class="code" href="a00002.html">00033</a>   <span class="keyword">class </span><a class="code" href="a00002.html" title="Abstract interface for an association finding model.">AssociationModel</a>
+<a name="l00034"></a>00034   {
+<a name="l00035"></a>00035   <span class="keyword">public</span>:
 <a name="l00037"></a>00037 
-<a name="l00039"></a>00039     <span class="keyword">virtual</span> ~<a class="code" href="a00003.html" title="DocUnigramCounter for doubles (to use with WeightedIDSets). Similar to RelDocUnigram...">DoubleDocUnigramCounter</a>() {}
-<a name="l00040"></a>00040     
-<a name="l00042"></a>00042     <span class="keyword">const</span> std::string lexiconID()<span class="keyword"> const </span>{
-<a name="l00043"></a>00043       <span class="keywordflow">return</span> ( ind.termLexiconID() );
-<a name="l00044"></a>00044     }
-<a name="l00045"></a>00045 
-<a name="l00046"></a>00046   <span class="keyword">protected</span>:
-<a name="l00048"></a>00048     <span class="keywordtype">void</span> countDocUnigram( lemur::api::DOCID_T docID, <span class="keywordtype">double</span> weight = 1 );
-<a name="l00049"></a>00049     
-<a name="l00051"></a>00051     <span class="keyword">const</span> lemur::api::Index &amp;ind;
-<a name="l00052"></a>00052   };
-<a name="l00053"></a>00053 }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="preprocessor">#endif </span><span class="comment">/* _DOUBLEDOCUNIGRAMCOUNTER_HPP */</span>
+<a name="l00042"></a><a class="code" href="a00002.html#554b3e0e77c67a43e4cec3639965545d">00042</a>     <a class="code" href="a00002.html#554b3e0e77c67a43e4cec3639965545d">AssociationModel</a>( <span class="keyword">const</span> lemur::api::Index&amp; index,
+<a name="l00043"></a>00043                       <span class="keyword">const</span> <a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>&amp; entities,
+<a name="l00044"></a>00044                       <span class="keyword">const</span> <a class="code" href="a00009.html" title="Query representation.">QueryRep</a>&amp; queries,
+<a name="l00045"></a>00045                       <a class="code" href="a00010.html" title="Collecting and calculating statistics.">Stat</a>&amp; stat
+<a name="l00046"></a>00046                      ) : <a class="code" href="a00002.html#5d9b7fd5e4341dfa7098abd324560d3b" title="Lemur index.">index_</a>(index), <a class="code" href="a00002.html#3e2d7a14846f5d9f0870397c1e4df216" title="Entity representation.">entities_</a>(entities), <a class="code" href="a00002.html#5300979ba681380612833199bd430b59" title="Query representation.">queries_</a>(queries),
+<a name="l00047"></a>00047                          <a class="code" href="a00002.html#bd228dea4383bd4d978b10652dcb90c0" title="Stat collector.">stat_</a>(stat), <a class="code" href="a00002.html#49da85a1359cbf8984a6f3c9b0017226" title="Whether initialization has completed.">init_</a>(false) {}
+<a name="l00048"></a>00048     
+<a name="l00050"></a>00050     <span class="keyword">virtual</span> ~<a class="code" href="a00002.html" title="Abstract interface for an association finding model.">AssociationModel</a>() {}
+<a name="l00051"></a>00051 
+<a name="l00053"></a>00053     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00002.html#792aaaa6abe5e4572cac37e5819ba042" title="Initialization. Must be called before scoreAll().">init</a>() = 0;
+<a name="l00054"></a>00054     
+<a name="l00056"></a>00056     <span class="keywordtype">void</span> <a class="code" href="a00002.html#34e26154c45608675f94d3b2d8d72875" title="Init smoothing settings.">initSmoothing</a>();
+<a name="l00057"></a>00057     
+<a name="l00059"></a>00059     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="a00002.html#611a283114e5f7cbb338fbfe45068f58" title="Set smoothing parameter automatically.">setSmoothingAuto</a>() = 0;
+<a name="l00060"></a>00060     
+<a name="l00062"></a>00062 
+<a name="l00065"></a>00065     <span class="keyword">virtual</span> ASSOCRES_T <a class="code" href="a00002.html#9150f1e15e363fb6aadd12d15281e24a" title="Run model to determine p(q|e) for all queries and entities.">scoreAll</a>() = 0;
+<a name="l00066"></a>00066     
+<a name="l00067"></a>00067   <span class="keyword">protected</span>:
+<a name="l00068"></a>00068     
+<a name="l00070"></a><a class="code" href="a00002.html#5d9b7fd5e4341dfa7098abd324560d3b">00070</a>     <span class="keyword">const</span> lemur::api::Index&amp; <a class="code" href="a00002.html#5d9b7fd5e4341dfa7098abd324560d3b" title="Lemur index.">index_</a>;
+<a name="l00071"></a>00071     
+<a name="l00073"></a><a class="code" href="a00002.html#3e2d7a14846f5d9f0870397c1e4df216">00073</a>     <span class="keyword">const</span> <a class="code" href="a00004.html" title="Entity representation.">EntityRep</a>&amp; <a class="code" href="a00002.html#3e2d7a14846f5d9f0870397c1e4df216" title="Entity representation.">entities_</a>;
+<a name="l00074"></a>00074     
+<a name="l00076"></a><a class="code" href="a00002.html#5300979ba681380612833199bd430b59">00076</a>     <span class="keyword">const</span> <a class="code" href="a00009.html" title="Query representation.">QueryRep</a>&amp; <a class="code" href="a00002.html#5300979ba681380612833199bd430b59" title="Query representation.">queries_</a>;
+<a name="l00077"></a>00077     
+<a name="l00079"></a><a class="code" href="a00002.html#bd228dea4383bd4d978b10652dcb90c0">00079</a>     <a class="code" href="a00010.html" title="Collecting and calculating statistics.">Stat</a>&amp; <a class="code" href="a00002.html#bd228dea4383bd4d978b10652dcb90c0" title="Stat collector.">stat_</a>;
+<a name="l00080"></a>00080     
+<a name="l00082"></a><a class="code" href="a00002.html#49da85a1359cbf8984a6f3c9b0017226">00082</a>     <span class="keywordtype">bool</span> <a class="code" href="a00002.html#49da85a1359cbf8984a6f3c9b0017226" title="Whether initialization has completed.">init_</a>;
+<a name="l00083"></a>00083 
+<a name="l00085"></a><a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44">00085</a>     std::string <a class="code" href="a00002.html#f98e39bf91a6dbd3e2b4de08757e1e44" title="Smoothing method.">smoothingMethod_</a>;
+<a name="l00086"></a>00086     
+<a name="l00088"></a><a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56">00088</a>     <span class="keywordtype">double</span> <a class="code" href="a00002.html#c6fd32ae100153d7c30d6ce1f2256e56" title="Smoothing parameter.">smoothingParam_</a>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090   };
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="preprocessor">#endif </span><span class="comment">/* _ASSOCIATIONMODEL_HPP */</span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Thu Dec 10 23:36:40 2009 for EARS by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Tue May 11 17:34:38 2010 for EARS by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>
