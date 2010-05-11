@@ -22,4 +22,4 @@ The following operations are recorded:
 || docInfoList || Get the document list for a term || M2 ||
 
 
-Operations marked by `*` are not computed by default as they slow down computation. If you want these computed change the line `#define DETAILED_STAT 0` to `#define DETAILED_STAT 1` in `includes/Stat.hpp` (and don't forget to recompile)!
+Operations marked with `*` are not computed by default as they slow down computation. If you want these computed change the line `#define DETAILED_STAT 0` to `#define DETAILED_STAT 1` in `includes/Stat.hpp` (and don't forget to recompile)!
