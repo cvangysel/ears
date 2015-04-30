@@ -1,0 +1,30 @@
+# EARS Changelog #
+
+## From 1.0 to 1.05 ##
+
+  * Collecting statistics about basic operations involved in the computations of the models
+    * See: [Stat](Stat.md)
+
+  * Examples for expertise retrieval on the UvT expert collection
+    * See: `examples/uvt/README`
+
+  * (Fixed) Uninitialized variables
+
+
+## From 0.9 to 1.0 ##
+
+  * Document-entity associations
+    * (Added) Support for non-binary document-entity associations
+    * (Added) Document-entity associations are normalized
+    * (Fixed) Associations with 0 weight caused nan values for Model 1
+
+  * Smoothing parameter estimation for Model 1
+    * Computation speeded up
+    * Progress indicated
+
+  * Makefile for Visual Studio 2008 (EARS.vcproj)
+    * See also: [CompilingWithVisualStudio](CompilingWithVisualStudio.md)
+
+  * Minor fixes:
+    * ears.cpp: default log level 'info' needs to be lowercased
+    * Raise error in case of unknown smoothing method
